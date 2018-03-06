@@ -1,0 +1,51 @@
+﻿@model MultiPART.Models.ViewModel.ProjectProgressViewModel
+
+@{
+    string WidthStyleDeath = "Width : " + (100.0 * Model.DeathNumber / Model.AssignedNumber).ToString() + "%";
+
+    string WidthStyleComplete = "Width : " + (100.0 * Model.CompletedNumber / Model.AssignedNumber).ToString() + "%";
+
+    int? LeftNumber = (Model.CreatedNumber == null ? 0 : Model.CreatedNumber)
+        - (Model.DeathNumber == null ? 0 : Model.DeathNumber)
+        - (Model.CompletedNumber == null ? 0 : Model.CompletedNumber);
+    
+    string WidthStyleCreation = "Width : " + (100.0 * LeftNumber / Model.AssignedNumber).ToString() + "%";
+
+    int? NotCreatedNumber = Model.AssignedNumber - Model.CreatedNumber;
+    
+    string WidthStyleNotCreated = "Width : " + (100.0 * NotCreatedNumber / Model.AssignedNumber).ToString() + "%";
+    }
+
+<div class=" row col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="col-xs-12 col-sm-4">
+        <h4>@Html.DisplayFor(m => m.ResearchgroupName)</h4>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="progress">
+            
+            <div class="progress-bar progress-bar-danger" style="@WidthStyleDeath">
+                <span class="sr-only">35% Complete (danger)</span>
+                @Html.DisplayFor(m => m.DeathNumber)
+            </div>
+            <div class="progress-bar progress-bar-success" style="@WidthStyleComplete">
+                <span class="sr-only">20% Complete (success)</span>
+                @Html.DisplayFor(m => m.CompletedNumber)
+
+            </div>
+            <div class="progress-bar progress-bar-primary" style="@WidthStyleCreation">
+                <span class="sr-only">35% Complete (danger)</span>
+                
+                @LeftNumber
+            </div>
+            <div class="progress-bar progress-bar-info" style="@WidthStyleNotCreated">
+                <span class="sr-only">35% Complete (danger)</span>
+                
+                @NotCreatedNumber
+            </div>
+        </div>
+       
+    </div>
+     <div class=" col-sm-2">
+        @Html.DisplayFor(m => m.AssignedNumber) 
+            </div>
+</div>

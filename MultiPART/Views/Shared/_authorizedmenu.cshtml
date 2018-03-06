@@ -1,0 +1,51 @@
+﻿<ul class="nav navbar-nav">
+
+    @if (Request.IsAuthenticated)
+    {
+        if (HttpContext.Current.User.IsInRole("Administrator")|| HttpContext.Current.User.IsInRole("Superuser"))
+        {
+        <li>
+            <a id="admin-dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" class="top-menu">Administrator<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu nav" id="admin-dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>@Html.ActionLink("Users", "Users", "Account")
+                </li>
+                <li>@Html.ActionLink("Lookup Tables", "Index", "LookupTableEditor")
+                </li>
+            </ul>
+        </li>
+        }
+
+        if (HttpContext.Current.User.IsInRole("Superuser")
+             //|| HttpContext.Current.User.IsInRole("Poweruser") 
+             || HttpContext.Current.User.IsInRole("Administrator"))
+        {
+        <li>@Html.ActionLink("Institution", "Index", "Institution", null, new { @class = "top-menu" })
+        </li>
+        <li>@Html.ActionLink("Research Group", "Index", "Researchgroup", null, new { @class = "top-menu" })
+        </li>
+        }
+
+        if (HttpContext.Current.User.IsInRole("User") 
+            || HttpContext.Current.User.IsInRole("Poweruser") 
+            || HttpContext.Current.User.IsInRole("Superuser") 
+            || HttpContext.Current.User.IsInRole("Administrator"))
+        {
+         
+        <li>@Html.ActionLink("Project", "Index", "MultiPARTProject", null, new { @class = "top-menu" }) </li>
+        }
+    }
+
+    <li>@Html.ActionLink("Tutorial", "Index", "Tutorial", null, new { @class = "top-menu" }) </li>
+
+
+  @*  @if (Request.IsAuthenticated)
+    {
+        if (HttpContext.Current.User.IsInRole("User") || HttpContext.Current.User.IsInRole("Superuser") || HttpContext.Current.User.IsInRole("Administrator"))
+        {
+         
+        <li>@Html.ActionLink("Contact Us", "ContactUs", "Home", null, new { @class = "top-menu" }) </li>
+        
+        }
+    }*@
+</ul>

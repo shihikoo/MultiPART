@@ -1,0 +1,89 @@
+﻿@model MultiPART.Models.ViewModel.MultiPARTProjectListViewModel
+
+<div class=" col-xs-12 row">
+    <div class="col-md-2 col-xs-12">
+        <a href="@Url.Action("Details", new { projectid = Model.MultiPARTProjectID })">
+            @if (Model.Logo != null)
+            {
+                <img class="projectlogo" src= "@Model.Logo" alt="logo"/>        
+            }
+            <img class="projectlogo" src="~/Content/Images/multipart_logo.png" alt="logo" />
+        </a>
+    </div>
+
+    <div class="col-md-10 col-sm-10 col-xs-12">
+        <h3>
+            <a href="@Url.Action("Details", new { projectid = Model.MultiPARTProjectID })">@Model.MultiPARTProjectName
+            </a>
+        </h3>
+        @Html.DisplayNameFor(model => model.ProjectStartDate): @Html.DisplayFor(m => m.ProjectStartDate) |
+
+         @Html.DisplayNameFor(model => model.ProjectCompletionDateExpected):   @Html.DisplayFor(m => m.ProjectCompletionDateExpected) |
+
+        @Html.DisplayNameFor(model => model.ProjectComletionDate): @if (Model.ProjectComletionDate != null)
+                                                                   { @Html.DisplayFor(m => m.ProjectComletionDate)}
+                                                                   else
+                                                                   { <text> - </text> }
+        <br />
+       @*//         <p><strong>@Html.DisplayNameFor(model => model.Creator): </strong>@Html.DisplayFor(m => m.Creator) </p>*@
+
+        <p><strong>@Html.DisplayNameFor(model => model.Objectives): </strong>@Html.DisplayFor(m => m.Objectives) </p>
+
+    </div>
+</div>
+
+<div class=" col-xs-12 row">
+    <div class =" col-md-2">
+                @if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Administrator") || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Superuser"))
+        { 
+            <div class="col-xs-12 col-sm-3 manul-center">
+                <br class="visible-xs visible-sm" />
+                @using (Html.BeginForm("DeleteProject", "MultiPARTProject", new { projectid = Model.MultiPARTProjectID }))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-default manul-center ">Delete Project</button>
+                }
+            </div>
+  
+        }
+    </div>
+    <div class="col-xs-12 col-md-10 ">
+        <div class="col-xs-12 col-sm-3 white-font manul-center">
+            <br class="visible-xs visible-sm" />
+            <a class="btn btn-danger manul-center" href="@Url.Action("Details", "MultiPARTProject", new { projectid = Model.MultiPARTProjectID })">Project Details </a>
+        </div>
+
+        <div class="col-xs-12 col-sm-3 white-font manul-center">
+            <br class="visible-xs visible-sm" />
+            <a class="btn btn-primary manul-center" href="@Url.Action("Index", "AnimalHusbandry", new { projectid = Model.MultiPARTProjectID })">Animal Husbandry
+            </a>
+        </div>
+
+        <div class="col-xs-12 col-sm-3 white-font manul-center">
+            <br class="visible-xs visible-sm" />
+            <a class="btn btn-warning manul-center" href="@Url.Action("Index", "Animal", new { projectid = Model.MultiPARTProjectID })">Start Experiment
+            </a>
+
+
+
+        </div>
+        @if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Administrator") || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Superuser")
+                   || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Poweruser"))
+        { 
+            <div class="col-xs-12 col-sm-3 manul-center">
+                            <br class="visible-xs visible-sm" />
+
+                <a class="btn btn-info manul-center white-font" href="@Url.Action("Index", "ProjectProgress", new { projectid = Model.MultiPARTProjectID })">Progress
+                </a>
+            </div>
+  
+        }
+
+
+    </div>
+
+</div>
+<div class="row"></div>
+<br />
+<hr />
+<div class="row"></div>

@@ -1,0 +1,18 @@
+﻿@model MultiPART.Models.ViewModel.ProcedureViewModel
+
+@{
+    ViewBag.Title = "Add " + ViewBag.procedurepurpose;
+}
+
+<section class="col-xs-12">
+   @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.EditorForModel()
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

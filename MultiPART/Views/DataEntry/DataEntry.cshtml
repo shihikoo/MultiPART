@@ -1,0 +1,99 @@
+﻿@model MultiPART.Models.ViewModel.DataEntryViewModels.DataEntryViewModel
+
+@Html.EditorForModel()
+
+@section Styles
+{
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/fileinput.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/fileinput.min.js"></script>
+    <script src="~/Scripts/handlebars-v3.0.3.js"></script>
+    <script src="~/Scripts/jquery.validate.date.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+
+    <script type="text/javascript">
+        var locale = "en-GB";
+        $(function () {
+            $('.datetimepicker').datetimepicker({ locale: locale });
+        });
+
+        $('.file').fileinput({ showCaption: false, showUpload: false });
+        //$('#filePreview').fileinput({ showCaption: false, showUpload: false, initialPreview: "<img src='file:///C:/Multipart/flights.png' class='file-preview-image' alt='Desert' title='Desert'>" });
+
+        //$(function () {
+        //    $(".detailsEditor").sortable();
+        //});
+
+        var viewModel = {
+            checkAdd: function (designId) {
+                var editor = $("#detailsEditor-" + designId);
+                var multiple = editor.data('multiple');
+                var editorChildren = $("#detailsEditor-" + designId + " tr");
+                var detailNumber = editorChildren.length;
+                var addLink = $("#add-" + designId);
+                if ((multiple == false) && (detailNumber > 0)) {
+                    addLink.hide();
+                } else {
+                    addLink.show();
+                }
+            },
+            addNewFile: function (designId) {
+                var source = $("#fileDetailTemplate-" + designId).html();
+                var template = Handlebars.compile(source);
+                var context = { index: viewModel._generateGuid() };
+                var html = template(context);
+                $("#detailsEditor-" + designId).append(html);
+                $(function () {
+                    $('.datetimepicker').datetimepicker({ locale: locale });
+                });
+                $('.file').fileinput({ showCaption: false, showUpload: false });
+                viewModel.checkAdd(designId);
+            },
+            addNewOption: function (designId) {
+                var source = $("#optionDetailTemplate-" + designId).html();
+                var template = Handlebars.compile(source);
+                var context = { index: viewModel._generateGuid() };
+                var html = template(context);
+                $("#detailsEditor-" + designId).append(html);
+                $(function () {
+                    $('.datetimepicker').datetimepicker({ locale: locale });
+                });
+                $('.file').fileinput({ showCaption: false, showUpload: false });
+                viewModel.checkAdd(designId);
+            },
+            addNewValue: function (designId) {
+                var source = $("#valueDetailTemplate-" + designId).html();
+                var template = Handlebars.compile(source);
+                var context = { index: viewModel._generateGuid() };
+                var html = template(context);
+                $("#detailsEditor-" + designId).append(html);
+                $(function () {
+                    $('.datetimepicker').datetimepicker({ locale: locale });
+                });
+                $('.file').fileinput({ showCaption: false, showUpload: false });
+                viewModel.checkAdd(designId);
+            },
+            _generateGuid: function () {
+                // Source: http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/105074#105074
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
+        };
+        $(document).ready(function () {
+            @foreach (var property in @Model.Properties)
+            {
+                @:  viewModel.checkAdd(@property.DesignID);
+                                                }
+        });
+    </script>
+}

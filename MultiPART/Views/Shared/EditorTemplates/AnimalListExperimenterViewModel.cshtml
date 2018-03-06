@@ -1,0 +1,68 @@
+﻿@model MultiPART.Models.ViewModel.AnimalListExperimenterViewModel
+
+<tr>
+    <td>@Html.DisplayFor(m => m.AnimalLabel)</td>
+
+    @foreach (var p in Model.Procedures)
+    {
+        <td>
+            @{string panelID = "Administration" + p.ProcedureID.ToString() + "_" + Model.AnimalID.ToString();
+            }
+            <a data-toggle="collapse" data-parent="#accordion" href="#@panelID" aria-expanded="false" class="btn btn-primary white-font" aria-controls="@panelID">
+                @p.ProcedureLabel
+            </a>
+            <div id="@panelID"  class="panel-collapse collapse" >
+                @if (p.Administrations.Count() > 0)
+                {
+                    <br />
+                    foreach (var administration in p.Administrations)
+                    {
+                    <p>
+                        @if (administration.Entered == true)
+                        {
+                            <a href="@Url.Action("DataEntryDisplay", "DataEntry", new
+                         {
+                             procedureId = p.ProcedureID,
+                             administrationId = administration.AdministrationID,
+                             animalId = Model.AnimalID,
+                             projectId = Model.ProjectID,
+                             researchGroupId = Model.ResearchGroupID,
+                             diseaseModelInductionId = Model.DiseaseModelInductionId
+                         })" class="btn btn-success btn-sm white-font" >
+                                <i class="fa fa-clock-o"></i>
+                                @administration.StartTime @ViewBag.DisplayTimeUnit
+                                  <i class="fa fa-arrow-right"></i>
+                                @administration.EndTime @ViewBag.DisplayTimeUnit
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("DataEntry", "DataEntry", new
+                         {
+                             procedureId = p.ProcedureID,
+                             administrationId = administration.AdministrationID,
+                             animalId = Model.AnimalID,
+                             projectId = Model.ProjectID,
+                             researchGroupId = Model.ResearchGroupID,
+                             diseaseModelInductionId = Model.DiseaseModelInductionId
+                         })" class="btn btn-info btn-sm white-font" >
+                                <i class="fa fa-clock-o"></i>
+                                @administration.StartTime  @ViewBag.DisplayTimeUnit
+                                  <i class="fa fa-arrow-right"></i>
+                                @administration.EndTime  @ViewBag.DisplayTimeUnit
+                            </a>
+                        }
+                    </p>
+                    }
+                }
+                else
+                {
+                    <p>No Schedule</p>
+                    
+                }
+            </div>
+
+        </td>
+    }
+
+</tr>

@@ -1,0 +1,47 @@
+﻿@using Microsoft.Ajax.Utilities
+@using MultiPART.Models.ViewModel.DataEntryViewModels
+@using MultiPART.Utilities
+@model DataEntryDetailFileViewModel
+
+<tr>
+    @{
+        var prefixArray = ViewData.TemplateInfo.HtmlFieldPrefix.Split('.');
+        var prefix = prefixArray[0];
+    }
+    @using (Html.BeginCollectionItem(prefix + ".DataEntryDetails"))
+    {
+        @Html.HiddenFor(m => m.DataEntryDetailID)
+        @Html.HiddenFor(m => m.DataEntryDataEntryID)
+        @Html.HiddenFor(m => m.DesignID)
+        @Html.HiddenFor(m => m.FileID)
+        @Html.Hidden("ModelType", Model.GetType())
+
+        <td class="col-md-2 form-group">
+            <div>
+                @Html.DisplayFor(model => model.StartTime, new { @class = "form-control datetimepicker" })
+            </div>
+        </td>
+        <td class="col-md-2 form-group">
+            <div>
+                @Html.DisplayFor(model => model.EndTime, new { @class = "form-control datetimepicker" })
+            </div>
+        </td>
+        <td class="col-md-3 row form-group">
+            <div>
+                @Html.DisplayFor(model => model.Description, new { @class = "form-control" })
+            </div>
+        </td>
+        <td class="col-md-3 form-group">
+            @Html.HiddenFor(m=>m.FileUrl)
+            <div>
+                @if (!String.IsNullOrWhiteSpace(Model.FileUrl))
+                {
+                    @Html.ActionLink("Uploaded File","GetFile",new{FileID = Model.FileID})
+                }
+               
+            </div>
+        </td>
+        <td class="col-md-2">
+        </td>
+    }
+</tr>

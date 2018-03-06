@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="538e648e30034a97bdc0cadaf523d904" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="MultiPART2Model.Administration" Width="1.5" PointX="12" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.AnimalAdministration" Width="3.25" PointX="15.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.AnimalHusbandry" Width="1.5" PointX="7.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.AnimalHusbandryField" Width="1.5" PointX="10" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.AnimalHusbandryOption" Width="1.5" PointX="10" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.AnimalProcedure" Width="1.5" PointX="19.125" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Animal" Width="1.5" PointX="16.875" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.AnimalSupplier" Width="1.5" PointX="14.125" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.BehavioralScore" Width="1.5" PointX="19.125" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Careerhistory" Width="1.5" PointX="2" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.CohortProcedureAssignment" Width="1.5" PointX="19.125" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Cohort" Width="1.5" PointX="17" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Country" Width="1.5" PointX="4.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.DataEntry" Width="1.5" PointX="10.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.DataEntryDesign" Width="1.5" PointX="13.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.DataEntryDetail" Width="1.5" PointX="7.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.DataEntryDetailValue" Width="1.5" PointX="5.375" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.DataEntryField" Width="1.5" PointX="13.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.DataEntryOption" Width="1.5" PointX="10.625" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.File" Width="1.5" PointX="7.875" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Institution" Width="1.5" PointX="4.125" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.MultiPARTProject" Width="1.5" PointX="12.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.ProcedureDetailOptionField" Width="1.5" PointX="9.625" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.ProcedureDetailOption" Width="1.5" PointX="18.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.ProcedureDetail" Width="1.5" PointX="10" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Procedure" Width="1.5" PointX="12" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Question" Width="1.5" PointX="19.125" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.ResearchgroupCohortAssignment" Width="1.5" PointX="6" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.ResearchgroupInMultiPARTProject" Width="1.5" PointX="7.875" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Researchgroup" Width="1.5" PointX="5.875" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.SIUnit" Width="1.5" PointX="4.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Species" Width="1.5" PointX="14.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Strain" Width="1.5" PointX="14.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.Unit" Width="1.5" PointX="4.625" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.UserDataentryAssignment" Width="1.5" PointX="7.625" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.UserInResearchgroup" Width="1.5" PointX="4.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.UserProfile" Width="1.5" PointX="4.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultiPART2Model.UserProjectAssignment" Width="1.5" PointX="7.5" PointY="15.25" IsExpanded="true" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Administrations_dbo_Procedures_ProcedureID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalAdministrations_dbo_Administrations_AdministrationID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalAdministrations_dbo_Animals_AnimalID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntries_dbo_AnimalAdministrations_AnimalAdministrationID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalHusbandries_dbo_AnimalHusbandryFields_AnimalHusbandryFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalHusbandries_dbo_AnimalHusbandryOptions_AnimalHusbandryOptionID" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalHusbandries_dbo_MultiPARTProjects_MultiPARTProjectMultiPARTProjectID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalHusbandries_dbo_Researchgroups_ResearchgroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalHusbandries_dbo_Researchgroups_ResearchgroupResearchgroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalHusbandries_dbo_Strains_StrainID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalHusbandryOptions_dbo_AnimalHusbandryFields_AnimalHusbandryFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_AnimalProcedures_dbo_Animals_AnimalID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Animals_dbo_Cohorts_CohortID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Animals_dbo_Researchgroups_ResearchgroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Cohorts_dbo_AnimalSuppliers_AnimalSupplierAnimalSupplierID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_BehavioralScores_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_BehavioralScores_dbo_UserDataentryAssignments_UserDataentryAssignmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Careerhistories_dbo_Institutions_InstitutionInstitutionID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Careerhistories_dbo_UserProfile_UserProfileUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_CohortProcedureAssignments_dbo_Cohorts_CohortID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Cohorts_dbo_MultiPARTProjects_MultiPARTProjectMultiPARTProjectID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Cohorts_dbo_Strains_StrainStrainID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ResearchgroupCohortAssignments_dbo_Cohorts_CohortID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Institutions_dbo_Countries_CountryCountryID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntries_dbo_DataEntryDesigns_DataEntryDesignDataEntryDesignID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntryDetails_dbo_DataEntries_DataEntryDataEntryID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_UserDataentryAssignments_dbo_DataEntries_DataEntryID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntryDesigns_dbo_DataEntryFields_DataEntryFieldDataEntryFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntryDesigns_dbo_Procedures_ProcedureProcedureID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntryDetailValue_dbo_DataEntryDetails_DataEntryDetailID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntryOptions_dbo_DataEntryFields_DataEntryFieldDataEntryFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_DataEntryOptions_dbo_DataEntryFieldsDataEntryFieldDataEntryFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Researchgroups_dbo_Institutions_InstitutionInstitutionID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Procedures_dbo_MultiPARTProjects_MultiPARTProjectMultiPARTProjectID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ResearchgroupInMultiPARTProjects_dbo_MultiPARTProjects_MultiPARTProjectMultiPARTProjectID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ProcedureDetailOptions_dbo_ProcedureDetailOptionFields_ProcedureDetailOptionFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ProcedureDetails_dbo_ProcedureDetailOptionFields_ProcedureDetailOptionFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ProcedureDetails_dbo_ProcedureDetailOptions_ProcedureDetailOptionID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_Questions_ProcedureDetailOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ProcedureDetails_dbo_Procedures_ProcedureProcedureID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ResearchgroupCohortAssignments_dbo_Researchgroups_ResearchgroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_ResearchgroupInMultiPARTProjects_dbo_Researchgroups_ResearchgroupResearchgroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_UserProjectAssignments_dbo_ResearchgroupInMultiPARTProjects_ResearchgroupInMultiPARTProjectResearchgroupInMultiPARTProjec" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_UserInResearchgroups_dbo_Researchgroups_ResearchgroupResearchgroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Units_dbo_SIUnits_SIID" ManuallyRouted="true" >
+          <ConnectorPoint PointX="5.25" PointY="24.797587890624996" />
+          <ConnectorPoint PointX="5.25" PointY="25.166666666666668" />
+          <ConnectorPoint PointX="6.375" PointY="25.166666666666668" />
+          <ConnectorPoint PointX="6.375" PointY="25.883444417317737" />
+          <ConnectorPoint PointX="6.125" PointY="25.883444417317737" />
+        </AssociationConnector>
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_Strains_dbo_Species_SpeciesID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_UserDataentryAssignments_dbo_UserProfile_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_UserInResearchgroups_dbo_UserProfile_UserProfileUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.FK_dbo_UserProjectAssignments_dbo_UserInResearchgroups_UserInResearchgroupUserInResearchgroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.DataEntryDetailFile" ManuallyRouted="false" />
+        <AssociationConnector Association="MultiPART2Model.DataEntryDetailOption" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

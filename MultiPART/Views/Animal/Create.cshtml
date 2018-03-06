@@ -1,0 +1,38 @@
+﻿@model MultiPART.Models.ViewModel.AnimalViewModel
+
+@{
+    ViewBag.Title = "New Animal";
+}
+<section class="col-xs-12">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.DiseasseModelInductionID)
+        @Html.HiddenFor(model => model.ProjectID)
+        @Html.HiddenFor(model => model.ResearchgroupID)
+
+        <div class="col-sm-12 row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnimalLabel)
+
+                    @Html.TextBoxFor(model => model.AnimalLabel, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AnimalLabel)
+                </div>
+            </div>
+        </div>
+        <div class="row col-xs-12">
+                <br />
+                <button type="submit" class="btn btn-success btn-lg manul-center">Allocate this animal to cohort</button>
+        </div>
+            <br />
+
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

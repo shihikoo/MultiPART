@@ -1,0 +1,8 @@
+﻿@model MultiPART.Models.ViewModel.ProjectProgressListViewModel
+
+
+@{
+    ViewBag.Title = "Project Progress of " + @Model.ProjectName;
+}
+
+@{Html.RenderPartial("_ProjectProgressList", Model.Progress);}

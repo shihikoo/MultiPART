@@ -1,0 +1,64 @@
+﻿@model MultiPART.Models.ViewModel.MultiPARTProjectViewModel
+
+@{
+    ViewBag.Title = "Create New Project";
+}
+<section class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="col-sm-12 row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MultiPARTProjectName)
+                    @Html.TextBoxFor(model => model.MultiPARTProjectName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MultiPARTProjectName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Background)
+                    @Html.TextAreaFor(model => model.Background, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Background)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Objectives)
+                    @Html.TextAreaFor(model => model.Objectives, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Objectives)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EthicalStatement)
+                    @Html.TextAreaFor(model => model.EthicalStatement, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EthicalStatement)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectStartDate)
+                    @Html.TextBoxFor(model => model.ProjectStartDate, new { @type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProjectStartDate)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectCompletionDateExpected)
+                    @Html.TextBoxFor(model => model.ProjectCompletionDateExpected, new { @type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProjectCompletionDateExpected)
+                </div>
+            </div>
+        </div>
+        <div class="row col-xs-12">
+            <div class="col-sm-offset-5">
+                <br />
+                <button type="submit" class="btn btn-warning btn-lg">Create</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Back", "Index", new { username = @ViewBag.username }, new { @class = "btn btn-default btn-lg" })
+            </div>
+            <br />
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

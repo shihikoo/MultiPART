@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.AnimalHusbandryViewModel>
+@{
+    ViewBag.Title = "Animal Husbandry";
+}
+
+<section class="col-xs-12 row">
+    <div class="col-sm-offset-2 col-xs-12 col-sm-10">
+        @using (Html.BeginForm("Index", "AnimalHusbandry", new { projectid = ViewBag.projectid }, FormMethod.Get))
+        {
+            @Html.ValidationSummary(true)
+
+            <input type="hidden" value ="@ViewBag.projectid" name="projectid" />@*
+            <h4>Please Choose:  </h4>*@
+  
+            <div class="col-md-4 top-buff bottom-buff">
+                <h4>Research Group:</h4>
+                @Html.DropDownList("researchgroupid", (SelectList)ViewBag.researchgroupList, new { @class = "form-control" })
+            </div>
+            <div class="col-md-4 top-buff bottom-buff">
+                <h4>Strain:</h4>
+                @Html.DropDownList("strainid", (SelectList)ViewBag.StrainList, new { @class = "form-control" })
+            </div>
+            <div class="col-xs-2 col-xs-offset-5 col-md-4 col-md-offset-0 top-buff bottom-buff">
+                <h4>&nbsp</h4>
+                <button type="submit" class="btn btn-danger">Select</button>
+            </div>             
+        }
+    </div>
+
+
+</section>
+
+@if (ViewBag.N >= 0)
+{
+     using (Html.BeginForm("Index", "AnimalHusbandry", new { projectid = ViewBag.projectid }, FormMethod.Post))
+        {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <hr class="col-xs-12"/>
+    @Html.EditorForModel()
+
+    
+    <br />    <br />
+
+    <div class="row col-xs-12">
+        <div class="col-xs-offset-5">
+            <br />
+            <button type="submit" class="btn btn-warning btn-lg">Save</button>
+
+        </div>
+        <br />
+    </div>
+}
+}
+
+else
+{
+
+    if (ViewBag.researchgroupid != 0 && ViewBag.strainid != 0)
+    {
+        
+    <div class="alert alert-info" role="alert">@ViewBag.ErrorMessage</div>
+    }
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

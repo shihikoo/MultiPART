@@ -1,0 +1,28 @@
+﻿@model MultiPART.Models.LocalPasswordModel
+
+@{
+    ViewBag.Title = "Change Password for " + @User.Identity.Name;
+}
+
+   <div class="col-xs-12 row">
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+@if (ViewBag.HasLocalPassword)
+{
+    @Html.Partial("_ChangePasswordPartial")
+}
+else
+{ 
+    @Html.Partial("_SetPasswordPartial")
+}
+       </div>
+   <div class="col-xs-12 row">
+            <br />
+
+        @Html.ActionLink("Back to List", "ViewProfile", new { username = @User.Identity.Name})
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,62 @@
+﻿@model MultiPART.Models.ViewModel.ProcedureDetailViewModel
+
+@Html.HiddenFor(model => model.FieldID)
+@Html.HiddenFor(model => model.ProcedureID)
+@Html.HiddenFor(model => model.FieldType)
+@Html.HiddenFor(model => model.Multiple)
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6">
+            <h4>@Html.DisplayFor(m => m.FieldName)</h4>
+        </div>
+
+        <div class="col-sm-6  multiple-choice">
+            @if (Model.FieldType == MultiPART.EntryFieldType.Lookup.ToString())
+            {
+                if (Model.Multiple == true)
+                {
+                @Html.ListBoxFor(model => model.OptionIDs, Model.Options, new { @class = "chosen-select listbox form-control", data_placeholder = string.Empty, @size = "15" })
+                }
+                else
+                {
+                    // didn't use editor template becaues there is a problem with passing options to the editor template when the model is empty               
+                @Html.DropDownListFor(model => model.OptionID, Model.Options, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OptionID)
+                }
+            }
+            else
+            {
+                if (Model.FieldType == MultiPART.EntryFieldType.Text.ToString())
+                {
+                @Html.TextBoxFor(model => model.Value, new { @class = "form-control" })  
+                }
+                else if (Model.FieldType == MultiPART.EntryFieldType.Integer.ToString())
+                {
+                @Html.TextBoxFor(model => model.Value, new { @class = "form-control", @type = "number" })     
+                }
+                else if (Model.FieldType == MultiPART.EntryFieldType.Double.ToString())
+                {
+
+                @Html.TextBoxFor(model => model.Value, new { @class = "form-control", @type = "number", @step = "0.01" })   
+                }
+                else if (Model.FieldType == MultiPART.EntryFieldType.DateTime.ToString())
+                {
+                @Html.TextBoxFor(model => model.Value, new { @class = "form-control", @type = "date" })   
+                }
+                else if (Model.FieldType == MultiPART.EntryFieldType.Date.ToString())
+                {
+                @Html.TextBoxFor(model => model.Value, new { @class = "form-control", @type = "date" })   
+                }
+                else if (Model.FieldType == MultiPART.EntryFieldType.Time.ToString())
+                {
+                @Html.TextBoxFor(model => model.Value, new { @class = "form-control", @type = "time" })      
+                }
+                @Html.ValidationMessageFor(model => model.Value)
+            }
+        </div>
+    </div>
+
+</div>
+
+<br />

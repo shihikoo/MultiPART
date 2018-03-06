@@ -1,0 +1,73 @@
+﻿@model MultiPART.Models.ViewModel.ResearchgroupMemberViewModel
+
+@{
+    ViewBag.Title = "Edit Researchgroup Member " + @Model.UserName;
+    ViewBag.ResearchgroupID = Model.ResearchgroupID;
+}
+
+<section class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="row col-xs-12">
+            @Html.HiddenFor(model => model.UserInResearchgroupID)
+            @Html.HiddenFor(model => model.ResearchgroupID)
+            @Html.HiddenFor(model => model.InstitutionID)
+             <h4>   </h4>   
+            <div class="col-sm-6 col-sm-offset-3">
+
+             @*      <div class="form-group">
+                 @Html.LabelFor(model => model.UserID)
+                    @Html.DropDownListFor(model => model.UserID, (SelectList)ViewBag.UserList, "---- Select User ----", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.UserID)
+                </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserRoleInResearchgroupID)
+                    @Html.DropDownListFor(model => model.UserRoleInResearchgroupID, (SelectList)ViewBag.ResearchgroupRoleList, "---- Select member's role in the group ----", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.UserRoleInResearchgroupID)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartTime)
+
+                    @Html.EditorFor(model => model.StartTime)
+                    @Html.ValidationMessageFor(model => model.StartTime)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndTime)
+
+                    @if (Model.EndTime == null)
+                    {
+                        @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control", type = "date" }) 
+                    }
+                    else
+                    {
+                        @Html.EditorFor(model => model.EndTime)
+                    }
+
+                    @Html.ValidationMessageFor(model => model.EndTime)
+                </div>
+            </div>
+        </div> 
+
+        <br />
+        <div class="row col-xs-12">
+            <div class="col-sm-offset-5">
+                <button type="submit" class="btn btn-warning btn-lg">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Back", "Researchgroupmembers", new { researchgroupid = ViewBag.ResearchgroupID }, new { @class = "btn btn-default btn-lg" })
+            </div>
+            <br />
+        </div>   
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

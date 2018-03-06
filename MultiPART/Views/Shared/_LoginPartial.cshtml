@@ -1,0 +1,30 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <div id="accountlink" class="nav navbar-nav dropdown">
+
+        <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+            @User.Identity.Name
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu nav" id="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li>@Html.ActionLink("Profile", "ViewProfile", "Account", new { username = @User.Identity.Name }, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li>@Html.ActionLink("Change Password", "Manage", "Account", new { username = @User.Identity.Name }, htmlAttributes: new { title = "Manage" })
+            </li>
+
+            <li>@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                { @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
+                }
+            </li>
+        </ul>
+    </div>
+}
+else
+{      <div id="accountlink2" class="nav navbar-nav dropdown">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+    </div>
+}

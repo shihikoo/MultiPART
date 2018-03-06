@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.DataEntryDesignViewModel>
+
+@{
+    ViewBag.Title = "Data Entry Design";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="col-sm-12">
+        <input hidden name="projectid" value="@ViewBag.projectid">
+        <input hidden name="procedureid" value="@ViewBag.procedureid">
+
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Selected)</th>
+                <th>@Html.DisplayNameFor(model => model.DataEntryFieldName)</th>
+                <th>@Html.DisplayNameFor(model => model.Mandatory)</th>
+                <th>@Html.DisplayNameFor(model => model.Multiple)</th>
+            </tr>
+
+            @Html.EditorForModel()
+
+        </table>
+
+        <div class="row col-xs-12">
+            <br />
+            <button type="submit" class="btn btn-warning btn-lg manul-center col-md-3 ">Save</button>
+            <div class="col-md-1"></div>
+            <a href="@Url.Action("FormPreview", new { @ViewBag.procedureid })" class="btn btn-success btn-lg white-font  manul-center col-md-3 ">Form Preview</a>
+            <div class="col-md-1"></div>
+                @Html.ActionLink("Back to Project", "Details", "MultiPARTProject",new { projectid = @ViewBag.projectid }, new { @class = "btn btn-default btn-lg manul-center col-md-3" })
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+}
+

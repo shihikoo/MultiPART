@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.AnimalListExperimenterViewModel>
+
+@{
+    ViewBag.Title = "Experiment: " + ViewBag.PageTitle;
+}
+
+<br />
+<div class="col-md-12 row">
+    <div class="table-responsive">
+        <table class="table table-hover notopboard-table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnimalLabel)
+                </th>
+                <th colspan="20">Experiment Forms</th>
+            </tr>
+
+            @Html.EditorForModel()
+        </table>
+    </div>
+</div>

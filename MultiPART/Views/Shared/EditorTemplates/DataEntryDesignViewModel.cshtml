@@ -1,0 +1,28 @@
+﻿@model MultiPART.Models.ViewModel.DataEntryDesignViewModel
+
+@Html.HiddenFor(model => model.ProcedureID)
+@Html.HiddenFor(model => model.DataEntryDesignID)
+@Html.HiddenFor(model => model.DataEntryFieldID)
+
+<tr>
+    <td>
+        @Html.CheckBoxFor(model => model.Selected) &nbsp
+        @Html.ValidationMessageFor(model => model.Mandatory)
+    </td>
+
+    <td>
+        @Html.DisplayFor(model => model.DataEntryFieldName, new { @class = "form-control" })
+    </td>
+
+    <td id="madatory">
+        @Html.EditorFor(model => model.Mandatory)
+        @Html.ValidationMessageFor(model => model.Mandatory)
+    </td>
+
+    <td id="multiple">
+        @Html.EditorFor(model => model.Multiple)
+        @Html.ValidationMessageFor(model => model.Multiple)
+    </td>
+</tr>
+
+

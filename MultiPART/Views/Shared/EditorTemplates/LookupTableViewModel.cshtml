@@ -1,0 +1,73 @@
+﻿@model MultiPART.Models.ViewModel.LookupTableViewModel
+<div id="row-@Model.ID" class="row">
+    @Html.HiddenFor(m => m.ID)
+
+    @if (ViewBag.CategoryName != "" && ViewBag.PurposeOrTypeName != "")
+    {
+        <div class="col-sm-4 col-xs-4">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <div class="col-sm-3 col-xs-3">
+            @Html.DropDownListFor(m => m.PurposeOrTypeID, (IEnumerable<SelectListItem>)Model.PurposesTypes.OrderBy(s => s.Text), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PurposeOrTypeID)
+        </div> 
+        <div class="col-sm-3 col-xs-3">
+            @Html.DropDownListFor(m => m.CategoryID, (IEnumerable<SelectListItem>)Model.Categories.OrderBy(s => s.Text), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CategoryID)
+        </div>
+        //if (Model.CategoryName == EntryFieldType.Lookup.ToString())
+        //{
+        <div class="col-sm-1 col-xs-3">
+            @Html.CheckBoxFor(m => m.Multiple, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Multiple)
+        </div>
+    //}
+    }
+    else if (ViewBag.CategoryName != "" && ViewBag.PurposeOrTypeName == "")
+    {
+        <div class="col-sm-6 col-xs-5">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div class="col-sm-5 col-xs-5">
+            @Html.DropDownListFor(m => m.CategoryID, (IEnumerable<SelectListItem>)Model.Categories.OrderBy(s => s.Text), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CategoryID)
+        </div>
+    }
+    else
+    {
+        <div class="col-sm-11 col-xs-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    }
+
+    @using (Ajax.BeginForm("Delete", "LookupTableEditor",
+                    new
+                    {
+                        lookuptableid = Model.ID,
+                        lookuptablename = Model.LookupTableName,
+                    },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Delete",
+                        OnComplete = "$('#row-" + @Model.ID + "').remove()"
+                    }, new { id = "delete-form-" + Model.ID })
+                    )
+    {
+       
+        @Html.AntiForgeryToken()
+
+        <div class="col-xs-1">
+            <button type="button" class="btn btn-danger btn-sm" id="confirm-delete-btn" 
+                data-toggle="modal" data-target="#confirm-delete-modal" data-recordid="@(Model.ID)" data-assigned-id ="@(Model.ID)">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    }
+
+    <br />
+    <br />
+</div>

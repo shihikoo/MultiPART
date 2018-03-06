@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.ProcedureListViewModel>
+            <div class="table-responsive">
+<table class="table notopboard-table">
+    <tr>
+        <th>@Html.DisplayNameFor(m => m.ProcedureLabel)</th>
+        <th>@Html.DisplayNameFor(m => m.ProcedureType) </th>
+        <th>@Html.DisplayNameFor(m => m.Details)</th>
+        <th>Schedules</th>
+        <th>Procedure Details</th>
+        <th>Experiment Form Preview</th>
+
+    </tr>
+
+      @Html.DisplayForModel()
+
+</table>
+
+</div>

@@ -1,0 +1,49 @@
+﻿@using MultiPART.Utilities
+@model IEnumerable<MultiPART.Models.ViewModel.AdministrationViewModel>
+
+@{
+    ViewBag.Title = "Schedule of " + ViewBag.ProcedureLabel;
+    
+}
+<h3><small>Assume the model induction time is the time "0".</small></h3>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+            
+<div class="row col-xs-12">
+    <div class="manul-center">
+        <div class="row ">
+            <div class="row col-sm-12 col-sm-offset-0">
+                <h4 class="col-sm-3 white-font">
+                    @Html.NoEncodeActionLink("<i class='fa fa-plus white-font'> </i> New Schedule", "Create", "Create", "Administration",
+                         routeValues: new { projectid = ViewBag.projectid, procedureid = ViewBag.procedureid },
+                         htmlAttributes: new { data_modal = "", @class = "btn btn-success " })
+                </h4>
+                <h4 class=" col-xs-4 col-sm-4 col-sm-offset-0">@Html.DisplayNameFor(model => model.StartTime) (in @ViewBag.DisplayTimeUnit)</h4>
+                <h4 class=" col-xs-4 col-sm-4">@Html.DisplayNameFor(model => model.EndTime) (in @ViewBag.DisplayTimeUnit)</h4>
+
+            </div>
+            <div class="row col-xs-12">
+                @Html.EditorForModel()
+            </div>
+        </div>
+    </div>
+
+    <div class="row col-xs-12">
+        <div class="col-sm-offset-4">
+            <br />   <br />   <br />
+                            <button type="submit" class="btn btn-warning btn-lg">Save Changes</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.ActionLink("Back to Project", "Details", "MultiPARTProject", new { projectid = @ViewBag.projectid }, new { @class = "btn btn-lg btn-default" })
+        </div>
+        <br />
+    </div>
+
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

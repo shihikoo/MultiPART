@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="c4a89f0c-16e1-404b-871b-dc025360cc79"
+  name="MultiPART"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="01e6c797-d68c-4ed5-be2a-21a0ecf4e1b9"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMultiPART"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="075fe386-af5c-43ac-b154-b16bca5352c7"
+        LastKnownName="Models"
+        LastKnownLocation="Package1_2314.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="08f87c83-3bd9-4636-9ac1-7f5ca1fa2baf"
+        name="DataEntryViewModelType"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="a2207bb4-9ac5-402a-a3d4-13d318f6ecd1"
+            handle="viewcode://./CodeSchema_Enum?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FChris%2FSource%2FRepos%2FMultiPART%2FMultiPART%2Fbin%2FMultiPART.dll Namespace%3DMultiPART Type%3DDataEntryViewModelType"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="2b7ab264-988b-4f30-af92-7c8f54c13c37"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2ee5fb23-fe87-4752-b0e1-4aaeb39d33d2">
+                <propertyInstance
+                  Id="38ad2dac-db66-44e8-98be-300fa7195344"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="48861c79-b47e-4f1f-b010-dd40ed18e3c1">
+                <propertyInstance
+                  Id="ac32a656-8870-487c-9881-74c8b81ee7d3"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fbf59392-3936-4686-a078-8198768546a0">
+                <propertyInstance
+                  Id="07a042f6-46ca-4bdc-94d4-048e799b84ae"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="c5aca4fe-5522-4525-9a0b-7343261ed9d8"
+        LastKnownName="Services"
+        LastKnownLocation="Package7_2314.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

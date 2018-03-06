@@ -1,0 +1,44 @@
+﻿@model MultiPART.Models.ViewModel.UserProjectAssignmentViewModel
+
+@{
+    ViewBag.Title = "Assign Researcher to " + Model.ProjectName;
+}
+<section class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="row col-xs-12">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                @Html.HiddenFor(model => model.ResearchgroupInMultiPARTProjectID)
+                @Html.HiddenFor(model => model.ResearchgroupID)
+                 @Html.HiddenFor(model => model.MultiPARTProjectID)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserInResearchgroupID)
+
+                    @Html.DropDownListFor(model => model.UserInResearchgroupID, (SelectList)ViewBag.userlist, "---- Select researchers ----", new { @class = "form-control" })                 
+                    @Html.ValidationMessageFor(model => model.UserInResearchgroupID)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserRoleinProjectID)
+                    @Html.DropDownListFor(model => model.UserRoleinProjectID, (SelectList)ViewBag.UserRoleList, "---- Select researcher's role ----", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserRoleinProjectID)
+                </div>
+
+                <br />
+                <div class="row col-xs-12">
+                    <div class="col-sm-offset-3">
+                        <button type="submit" class="btn btn-warning btn-lg">Save</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

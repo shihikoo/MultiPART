@@ -1,0 +1,75 @@
+﻿@model MultiPART.Models.ViewModel.DataEntryViewModels.DataEntryViewModel
+
+
+@using (Html.BeginForm("DataEntry", "DataEntry", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>
+            @Html.DisplayFor(m => m.ProcedureName) Procedure on @Html.DisplayFor(m => m.AnimalLabel), @Html.DisplayFor(m => m.Species) @Html.DisplayFor(m => m.Strain)
+        </legend>
+
+        @Html.HiddenFor(m => m.AnimalID)
+        @Html.HiddenFor(m => m.DiseaseModelInductionID)
+        @Html.HiddenFor(m => m.ResearchGroupID)
+        @Html.HiddenFor(m => m.ProjectID)
+        @Html.HiddenFor(m => m.Species)
+        @Html.HiddenFor(m => m.Strain)
+        @Html.HiddenFor(m => m.AnimalLabel)
+        @Html.HiddenFor(m => m.ProcedureName)
+        @Html.HiddenFor(m => m.ProcedureID)
+        @Html.HiddenFor(m => m.AnimalAdministrationID)
+        @Html.HiddenFor(m => m.AdministrationID)
+
+        <div class="row form-group form-inline">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-addon">Procedure Start Time
+                    </span>
+                    @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control datetimepicker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.StartTime)
+            </div>
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-addon">Procedure End Time
+                    </span>
+                    @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control datetimepicker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.EndTime)
+            </div>
+        </div>
+
+        <br /><br />
+
+        @for (int i = 0; i < Model.Properties.Count; i++)
+        {
+            @Html.EditorFor(m => m.Properties[i])
+        }
+
+        <div class="col-xs-12 row col-sm-offset-3 col-sm-6 ">
+          
+                <div class="col-xs-12 col-sm-6">
+  @if (Model.Properties.Count() > 0)
+            {
+                    <input type="submit" value="Save" class="btn btn-lg btn-warning" />
+            }
+                </div>
+           
+            <div class="col-xs-12 col-sm-6">
+                @Html.ActionLink("Cancel", "AnimalList2", "Animal",
+    new RouteValueDictionary()
+    {
+    {"projectId", Model.ProjectID},
+    {"diseaseModelInductionId", Model.DiseaseModelInductionID},
+    {"researchGroupId", Model.ResearchGroupID}
+    }, new Dictionary<string, object> { { "class", "btn btn-lg btn-default" } }
+    )
+
+            </div>
+
+        </div>
+    </fieldset>
+}

@@ -1,0 +1,57 @@
+﻿@model MultiPART.Models.ViewModel.ResearchgroupMemberViewModel
+@{
+    ViewBag.Title = "Add A New Member to Research Group";
+    ViewBag.ResearchgroupID = Model.ResearchgroupID;
+
+}
+<section class="col-xs-12 row">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="col-sm-6 col-sm-offset-3">
+            @Html.HiddenFor(model => model.ResearchgroupID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserID)
+
+                @Html.DropDownListFor(model => model.UserID, (SelectList)ViewBag.UserList, "---- Select User ----", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserID)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserRoleInResearchgroupID)
+
+                @Html.DropDownListFor(model => model.UserRoleInResearchgroupID, (SelectList)ViewBag.ResearchgroupRoleList, "---- Select member's role in the group ----", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserRoleInResearchgroupID)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StartTime)
+
+                @Html.TextBoxFor(model => model.StartTime, new { @type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StartTime)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndTime)
+                @Html.TextBoxFor(model => model.EndTime, new { @type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EndTime)
+            </div>
+            <br />
+            <div class="row col-xs-12">
+                <div class="col-sm-offset-4">
+                    <button type="submit" class="btn btn-warning btn-lg">Add</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Back", "Researchgroupmembers", new { researchgroupid = ViewBag.ResearchgroupID }, new { @class = "btn btn-default btn-lg" })
+                </div>
+            </div>
+            <br />
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

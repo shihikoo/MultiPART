@@ -1,0 +1,102 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.MultiPARTProjectListViewModel>
+
+@{
+    ViewBag.Title = "Your Projects";
+}
+
+@if ((HttpContext.Current.User.IsInRole("Poweruser") || HttpContext.Current.User.IsInRole("Superuser") || HttpContext.Current.User.IsInRole("Administrator")) && ViewBag.haveresearchgroup)
+{
+    <div class=" white-font col-xs-12 row">
+
+        <a class="btn btn-success pull-left" href ="@Url.Action("Create")"><i class="fa fa-plus">&nbsp</i> New Project</a>
+
+    </div>
+}
+else
+{
+    <h4>@ViewBag.NoProjectCreationMessage</h4>    
+}
+
+<br />
+<br />
+<h3 ><small>@ViewBag.Message</small></h3> <br />
+<br />
+<br />
+@Html.EditorForModel()
+@*@foreach (var item in Model)
+{ 
+    <div class=" col-xs-12 row">
+        <div class="col-md-2 col-xs-12">
+            <a href="@Url.Action("Details", new { projectid = item.MultiPARTProjectID })">
+                @if (item.Logo != null)
+                {
+                    <img class="projectlogo" src= "@item.Logo" alt="logo"/>        
+                }
+                <img class="projectlogo" src="~/Content/Images/multipart_logo.png" alt="logo" />
+            </a>
+        </div>
+
+        <div class="col-md-10 col-sm-10 col-xs-12">
+            <h3>
+                <a href="@Url.Action("Details", new { projectid = item.MultiPARTProjectID })">@item.MultiPARTProjectName
+                </a>
+            </h3>
+            @Html.DisplayNameFor(model => model.ProjectStartDate): @Html.DisplayFor(modelItem => item.ProjectStartDate) |
+
+         @Html.DisplayNameFor(model => model.ProjectCompletionDateExpected):   @Html.DisplayFor(modelItem => item.ProjectCompletionDateExpected) |
+
+        @Html.DisplayNameFor(model => model.ProjectComletionDate): @if (item.ProjectComletionDate != null)
+                                                                   { @Html.DisplayFor(modelItem => item.ProjectComletionDate)}
+                                                                   else
+                                                                   { <text> - </text> }
+            <br />
+            <p><strong>@Html.DisplayNameFor(model => model.Objectives): </strong>@Html.DisplayFor(modelItem => item.Objectives) </p>
+        </div>
+    </div>
+  
+    <div class=" col-xs-12 row">
+
+        <div class="col-xs-12 col-md-10 col-md-offset-2">
+
+
+
+            <div class="col-xs-12 col-sm-3 white-font manul-center">
+                      <br class="visible-xs visible-sm" />
+                <a class="btn btn-danger manul-center" href="@Url.Action("Details", "MultiPARTProject", new { projectid = item.MultiPARTProjectID })">Project Details </a>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 white-font manul-center">
+                      <br class="visible-xs visible-sm" />
+                <a class="btn btn-primary manul-center" href="@Url.Action("Index", "AnimalHusbandry", new { projectid = item.MultiPARTProjectID })">Animal Husbandry
+                </a>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 white-font manul-center">
+                      <br class="visible-xs visible-sm" />
+            <a class="btn btn-warning manul-center" href="@Url.Action("Index", "Animal", new { projectid = item.MultiPARTProjectID })">
+                Start Experiment
+            </a>
+
+        </div>
+
+            @if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Administrator") || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Superuser"))
+            { 
+                <div class="col-xs-12 col-sm-3 manul-center">
+                      <br class="visible-xs visible-sm" />
+                    @using (Html.BeginForm("DeleteProject", "MultiPARTProject", new { projectid = item.MultiPARTProjectID }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-default manul-center ">Delete</button>
+                    }
+                </div>
+  
+            }
+
+        </div>
+
+    </div>
+    <div class="row"></div>
+    <br />
+    <hr />
+    <div class="row"></div>
+}*@

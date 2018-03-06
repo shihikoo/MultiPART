@@ -1,0 +1,89 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.AnimalListViewModel>
+
+@{
+    ViewBag.Title = "Animals Cohort Assignment";
+}
+
+<div class="white-font">
+@*    <i class="fa fa-cog fa-spin"></i>*@
+    @Html.ActionLink("New animal", "Create", new {projectid = ViewBag.projectid, researchgroupid = ViewBag.researchgroupid, diseasemodelinductionid = ViewBag.diseasemodelinductionid }, new { @class = "btn btn-success btn-lg" })
+</div>
+
+<br />
+<br />
+<div class="col-md-12 row">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <i class="fa fa-paw fa-lg"></i>&nbsp Animals
+        </div>
+    <div class="table-responsive">
+        <table class="table table-striped notopboard-table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnimalLabel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cohort)
+                </th>
+                <th> @Html.DisplayNameFor(model => model.Treatment) </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnimalLabel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cohort)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Treatment)
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="col-md-12 row">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <i class="fa fa-eyedropper fa-lg"></i>&nbsp <i class="fa fa-paw fa-lg"></i>&nbsp Cohort & Procedures 
+        </div>
+
+        <table class="table notopboard-table ">
+            <tr>
+                <th>Cohort Label </th>
+                                    <th>Number of Animals</th>
+                <th>Cormobidity </th>
+                <th>Disease Model Induction</th>
+                <th>Treatment</th>
+                <th>Outcome Assessment</th>
+            </tr>
+            @foreach (var item in ViewBag.cohorts)
+            {         
+                <tr>
+                    <td>@item.CohortLabel
+                    </td>
+                    <td>@item.NumberOfAnimals</td>
+                    <td>@item.Cormobidity</td>
+                    <td>@item.DiseaseModelInduction</td>
+                    <td>@item.Treatment</td>
+                    <td>@item.OutcomeAssessment</td>
+                </tr>                   
+            }
+        </table>
+    </div>
+</div>
+
+
+
+

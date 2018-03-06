@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Add Procedure to Project";
+}
+
+<section class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <input type="hidden" value="@ViewBag.MultiPARTProjectID" name="projectid" />
+        <input type="hidden" value="@ViewBag.cohortid" name="cohortid" />
+
+        <div class="row col-xs-12">
+            <div class="col-md-8 col-md-offset-2">
+                <h4 class="procedure-title">Add Comorbidity</h4>
+                <div class="form-group multiple-choice">
+                    @Html.ListBox("Comorbidity", ViewBag.Comorbidityids as MultiSelectList, new { @class = "chosen-select listbox col-md-12 form-control", data_placeholder = "--- Add a Comorbidity ---", @size = "15" })
+                </div>
+                <br />
+                <h4 class="procedure-title">Choose a disease model</h4>
+                <div class="form-group multiple-choice">
+
+                    @Html.DropDownList("DiseaseModel", (SelectList)ViewBag.DiseaseModelids, new { @class = "chosen-select listbox col-md-12 form-control", data_placeholder = "Select a Disease Model...", @size = "15" })
+
+                </div>
+                <br />
+                <h4 class="procedure-title">Add Treatment</h4>
+                <div class="form-group multiple-choice">
+                    @Html.ListBox("Treatment", ViewBag.Treatmentids as MultiSelectList, new { @class = "chosen-select listbox col-md-12", data_placeholder = "--- Add a Treatment ---", @size = "15" })
+                </div>
+                <br />
+                <h4 class="procedure-title">Add Outcome Assessment</h4>
+                <div class="form-group multiple-choice">
+                    @Html.ListBox("OutcomeAssessment", ViewBag.OutcomeAssessmentids as MultiSelectList, new { @class = "chosen-select listbox col-md-12", data_placeholder = "--- Add a Outcome Assessment ---", @size = "15" })
+                </div>
+                                <br />
+                <h4 class="procedure-title">Add Anaesthesia</h4>
+                <div class="form-group multiple-choice">
+                    @Html.ListBox("Anaesthesia", ViewBag.Anesthesiaids as MultiSelectList, new { @class = "chosen-select listbox col-md-12", data_placeholder = "--- Add a Anaesthesia ---", @size = "15" })
+                </div>
+                                <br />
+                <h4 class="procedure-title">Add Post-Operative Analgesia</h4>
+                <div class="form-group multiple-choice">
+                    @Html.ListBox("Analgesia", ViewBag.Analgesiaids as MultiSelectList, new { @class = "chosen-select listbox col-md-12", data_placeholder = "--- Add a Post-Operative Analgesia ---", @size = "15" })
+                </div>
+                <br />
+                <div class="row col-xs-12">
+                    <div class="col-sm-offset-4">
+                        <button type="submit" class="btn btn-warning btn-lg">Save</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    }
+</section>
+
+
+
+@section scripts{
+      @Scripts.Render("~/bundles/jqueryval")
+     @Scripts.Render("~/bundles/chosenjs")
+    <script src="~/Scripts/addProcedureChosen.js"></script>
+}

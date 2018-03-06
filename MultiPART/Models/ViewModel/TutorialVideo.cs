@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace MultiPART.Models.ViewModel
+{
+    public class TutorialVideo
+    {
+        public int ID { get; set; }
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+
+        public string Script { get; set; }
+
+        public string PublishDate { get; set; }
+
+        public string URL { get; set; }
+
+        public string Category { get; set; }
+
+        public string Audience { get; set; }
+
+        public string Functions { get; set; }
+    }
+}

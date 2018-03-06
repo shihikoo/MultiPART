@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.InstitutionListViewModel>
+
+@{
+    ViewBag.Title = "Institution";
+}
+
+<div class=" white-font col-xs-12 row">
+    @*@Html.ActionLink("+ New Institution", "Create", null, new { @class = "btn btn-success" })*@
+
+        <a class="btn btn-success pull-left" href ="@Url.Action("Create")"><i class="fa fa-plus">&nbsp</i> Institution</a>
+    <br />
+</div>
+<br /><br /><br />
+<div class="col-xs-12 row table-responsive">
+    
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.InstitutionName).ToString(), "Index", new { sortOrder = (ViewBag.sortOrder == "InstitutionName") ? "InstitutionName desc" : "InstitutionName" })
+
+@*                @Html.DisplayNameFor(model => model.InstitutionName)*@
+            </th>
+
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.Country).ToString(), "Index", new { sortOrder = (ViewBag.sortOrder == "Country") ? "Country desc" : "Country" })
+
+                @*@Html.DisplayNameFor(model => model.Country)*@
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.CreatedOn).ToString(), "Index", new { sortOrder = (ViewBag.sortOrder == "CreatedOn") ? "CreatedOn desc" : "CreatedOn" })
+
+                @*@Html.DisplayNameFor(model => model.CreatedOn)*@
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.LastUpdatedOn)
+            </th>*@
+            @if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Administrator") || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Superuser"))
+            {  <th></th> }
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@Html.Raw(HttpUtility.HtmlDecode(item.InstitutionName)).ToString(), "Edit", new { id = item.InstitutionID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+@*                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdatedOn)
+                </td>*@
+
+                @if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Administrator") || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Superuser"))
+                { <td>
+                        @using (Html.BeginForm("Delete", "Institution", new { id = item.InstitutionID }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-default btn-xs ">Delete</button>
+                        }
+                    </td>
+                }
+
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,80 @@
+﻿@model MultiPART.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Registration";
+    ViewBag.Roles = TempData["AllRoles"];
+    ViewBag.Path = "Register";
+}
+
+
+
+<div class="col-sm-12 col-sm-offset-0 col-xs-8 col-xs-offset-1 row">
+    <br />
+    @using (Html.BeginForm(new { @role = "form", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+            <div class="col-sm-4 col-sm-offset-2">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Email)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmEmail)
+                    @Html.TextBoxFor(m => m.ConfirmEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ConfirmEmail)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ForeName)
+                    @Html.TextBoxFor(m => m.ForeName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ForeName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SurName)
+                    @Html.TextBoxFor(m => m.SurName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SurName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Details)
+                    @Html.TextAreaFor(m => m.Details, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Details)
+                </div>
+
+                <br />
+            </div>
+
+            <button type="submit" class="btn btn-warning btn-lg center-block manul-center">Register</button>
+        <br />
+      
+     
+    }
+     <br />
+      <div class="col-sm-4 col-sm-offset-1">   <p >Already have an account? Please log in     @Html.ActionLink("here", "Login") </p> </div>
+</div>
+
+    @Scripts.Render("~/bundles/jqueryval")
+

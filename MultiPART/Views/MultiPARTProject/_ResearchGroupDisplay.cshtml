@@ -1,0 +1,22 @@
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<MultiPART.Models.ViewModel.ResearchgroupInMultiPARTProjectViewModel>
+<div class="table-responsive">
+    <table class="table notopboard-table" id="researchGroups">
+        <tr>
+            <th>Research Group</th>
+            <th>Role</th>
+            <th>Registration Date </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ResearchgroupName
+                </td>
+                <td>@item.ResearchgroupRoleinMultiPARTProject</td>
+                <td>@item.RegistrationDate.IfNotNull(d => ((DateTime)d).ToShortDateString())</td>
+
+            </tr>
+        }
+    </table>
+</div>

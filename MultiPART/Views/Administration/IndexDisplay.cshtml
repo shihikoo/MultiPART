@@ -1,0 +1,38 @@
+﻿@using MultiPART.Utilities
+@model IEnumerable<MultiPART.Models.ViewModel.AdministrationViewModel>
+
+@{
+    ViewBag.Title = "Schedule of " + ViewBag.ProcedureLabel;
+    
+}
+<h3><small>Model induction time is considered as the time "0".</small></h3>
+<br />
+<br />
+
+<div class="row col-xs-12">
+    <div class="manul-center">
+        <div class="row ">
+            <div class="row col-sm-12 col-sm-offset-0">
+                <h4 class=" col-xs-4 col-xs-offset-2">@Html.DisplayNameFor(model => model.StartTime) (in @ViewBag.DisplayTimeUnit)</h4>
+                <h4 class=" col-xs-4">@Html.DisplayNameFor(model => model.EndTime) (in @ViewBag.DisplayTimeUnit)</h4>
+            </div>
+            <div class="row col-xs-12">
+                @Html.DisplayForModel()
+            </div>
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="row col-xs-12">
+        <div class="pull-left">
+
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back</a>
+        </div>
+        <br />
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

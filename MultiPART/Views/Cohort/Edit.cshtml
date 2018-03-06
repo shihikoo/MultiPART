@@ -1,0 +1,29 @@
+﻿@model MultiPART.Models.ViewModel.CohortViewModel
+
+@{
+    ViewBag.Title = "Edit Cohort";
+}
+
+<section class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+         @Html.EditorForModel()
+        
+        <div class="row col-xs-12">
+            <div class="col-sm-offset-5">
+                <br />
+                <button type="submit" class="btn btn-warning btn-lg">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back</a>
+            </div>
+            <br />
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

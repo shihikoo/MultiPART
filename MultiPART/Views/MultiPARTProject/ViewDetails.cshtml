@@ -1,0 +1,309 @@
+﻿@using MultiPART.Utilities
+@model MultiPART.Models.ViewModel.ProjectViewModel
+
+@{
+    ViewBag.Title = @Model.ProjectName;
+}
+<h3><small>You are currently listed as a normal user of this project. If you are one of the principal investigators and would like to edit the project, please contact the current principal investigator. </small></h3>
+<section class="col-xs-12 row projectdetail">
+    <div class="col-md-12" id="ProjectDetail">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <i class="fa fa-file-text fa-lg"></i>&nbsp Project Details
+            </div>
+            <div class="">
+                <table class="table notopboard-table ">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProjectName)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ProjectName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Background)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Background)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Objectives)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectives)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EthicalStatement)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.EthicalStatement)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AnalysisPlan)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.AnalysisPlan)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Funding)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Funding)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.StartDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ExpectedCompletionDate)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ExpectedCompletionDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CompletionDate)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.CompletionDate)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <section class="col-md-12" id="DetailResearchgroup">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <i class="fa fa-users fa-lg"></i>&nbsp Research Groups
+            </div>
+            <div id="researchGroupList">
+                @{ Html.RenderPartial("_ResearchGroupDisplay", Model.ResearchGroups); }
+            </div>
+         </div>
+    </section>
+
+    <section class="col-md-12" id="Researcher">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <i class="fa fa-user fa-lg"></i>&nbsp Researchers
+            </div>
+            <div id="researcherList">
+                @{ Html.RenderPartial("_ResearchersDisplay", Model.Researchers); }
+            </div>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="Cohort">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="fa fa-paw fa-lg"></i>&nbsp Cohort
+            </div>
+            <div id="cohortList">
+                @{ Html.RenderPartial("_CohortsDisplay", Model.Cohorts, new ViewDataDictionary { { "projectId", Model.ProjectId } }); }
+            </div>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="DiseaseModelInduction">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-scissors fa-lg"></i>&nbsp Disease Model Induction
+            </div>
+            <div id="diseaseModelInductionList">
+                @{ Html.RenderPartial("_ProcedureListDisplay", Model.DiseaseModels); }
+            </div>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="Anaesthesia">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-plus-square fa-lg"></i>&nbsp Anaesthesia
+            </div>
+            <div id="anaesthesiaList">
+                @{ Html.RenderPartial("_ProcedureListDisplay", Model.Anesthesia); }
+            </div>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="ComorbidityInduction">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-flask fa-lg"></i>&nbsp Comorbidity Induction
+            </div>
+            <div id="comorbidityInductionList">
+                @{ Html.RenderPartial("_ProcedureListDisplay", Model.Comorbidities); }
+            </div>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="Treatment">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-medkit fa-lg"></i>&nbsp Treatment
+            </div>
+            <div id="treatmentList">
+                @{ Html.RenderPartial("_ProcedureListDisplay", Model.Treatments); }
+            </div>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="OutcomeAssesment">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-eye fa-lg"></i>&nbsp Outcome Assessments
+            </div>
+            <div id="outcomeAssessmentList">
+                @{ Html.RenderPartial("_ProcedureListDisplay", Model.OutcomeAssessments); }
+            </div>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="PostOperativeAnalgesia">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="#" id="create-postOperativeAnalgesia-btn" data-toggle="modal" data-target="#create-postOperativeAnalgesia-modal" class="">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+                <i class="fa fa-plus-square fa-lg"></i>&nbsp Post-Operative Analgesia
+            </div>
+            <div id="postOperativeAnalgesiaList">
+                @{ Html.RenderPartial("_ProcedureListDisplay", Model.PostOpAnalgesia); }
+            </div>
+        </div>
+    </section>
+    
+    <div class="col-md-12" id="CohortProcedures">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="fa fa-eyedropper fa-lg"></i>&nbsp <i class="fa fa-paw fa-lg"></i>&nbsp Assign Procedures to Cohort
+            </div>
+            <div class="table-responsive">
+                <table class="table notopboard-table ">
+                    <tr>
+                        <th>Cohort Label </th>
+                        <th>Cormobidity </th>
+                        <th>Disease Model Induction</th>
+                        <th>Treatment</th>
+                        <th>Outcome Assessment</th>
+                        <th>Anaesthesia</th>
+                        <th>Post-Operative Analgesia</th>
+                    </tr>
+                    @foreach (var item in Model.CohortProcedures)
+                    {
+                        <tr>
+                            <td>@item.CohortLabel</td>
+                            <td>@item.Cormobidity</td>
+                            <td>@item.DiseaseModelInduction</td>
+                            <td>@item.Treatment</td>
+                            <td>@item.OutcomeAssessment</td>
+                            <td>@item.Anaesthesia</td>
+                            <td>@item.Analgesia</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12" id="CohortResearchGroups">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="fa fa-users fa-lg"></i>&nbsp <i class="fa fa-paw fa-lg"></i>&nbsp Assign Research Groups to Cohorts
+            </div>
+            <div class="table-responsive">
+                <table class="table notopboard-table ">
+                    <tr>
+                        <th>Cohort Label </th>
+                        <th>Research Group </th>
+                    </tr>
+                    @foreach (var item in Model.CohortResearchGroups)
+                    {
+                        <tr>
+                            <td>@item.CohortLabel </td>
+                            <td>@item.Researchgroup</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<br />
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/chosenjs")
+    @Scripts.Render("~/bundles/datetimepickerdate")
+    <script>
+
+        $('#confirm-delete-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var researchGroupId = button.data('researchgroupid');
+            $('#removeResearchGroupBtn').data('rId', researchGroupId);
+        });
+
+        function dismissDelete() {
+            $('#confirm-delete-modal').modal('hide');
+            var rId = $('#removeResearchGroupBtn').data('rId');
+            var deleteForm = $('#delete-form-' + rId);
+            deleteForm.submit();
+        }
+
+        function dismissClear() {
+            $('.modal').modal('hide');
+            $('.modalForm').clearForm();
+        }
+
+        function createCohort() {
+            $('#create-cohort-modal').modal('hide');
+            $('#createCohortForm').clearForm();
+        }
+
+        $(function () {
+            $('.form-reset').on('click', function () {
+                $(this).formReset();
+                return false;
+            });
+
+            $('input[type=reset]').on('click', function () {
+                $(this).resetValidation();
+            });
+        });
+        $('#addResearchGroup-btn').on('click', function () {
+            $('#addResearchGroupForm').reset();
+        });
+
+    </script>
+}

@@ -1,0 +1,88 @@
+﻿@model MultiPART.Models.ViewModel.MultiPARTProjectViewModel
+
+@{
+    ViewBag.Title = @Model.MultiPARTProjectName;
+}
+
+<section class="col-xs-12">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.MultiPARTProjectID)
+        <div class="row col-xs-12">
+
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MultiPARTProjectName)
+
+                    @Html.TextBoxFor(model => model.MultiPARTProjectName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MultiPARTProjectName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Background)
+
+                    @Html.TextAreaFor(model => model.Background, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Background)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Objectives)
+
+                    @Html.TextAreaFor(model => model.Objectives, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Objectives)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EthicalStatement)
+
+                    @Html.TextAreaFor(model => model.EthicalStatement, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EthicalStatement)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectStartDate)
+                    @if (Model.ProjectStartDate == null)
+                    {@Html.TextBoxFor(model => model.ProjectStartDate, new { @class = "form-control", type = "date" }) }
+                    else
+                    {@Html.EditorFor(model => model.ProjectStartDate)}
+                    @Html.ValidationMessageFor(model => model.ProjectStartDate)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectCompletionDateExpected)
+                    @if (Model.ProjectCompletionDateExpected == null)
+                    {@Html.TextBoxFor(model => model.ProjectCompletionDateExpected, new { @class = "form-control", type = "date" }) }
+                    else
+                    {@Html.EditorFor(model => model.ProjectCompletionDateExpected)}
+                    @Html.ValidationMessageFor(model => model.ProjectCompletionDateExpected)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectComletionDate)
+                    @if (Model.ProjectComletionDate == null)
+                    {@Html.TextBoxFor(model => model.ProjectComletionDate, new { @class = "form-control", type = "date" }) }
+                    else
+                    {@Html.EditorFor(model => model.ProjectComletionDate)}
+                    @Html.ValidationMessageFor(model => model.ProjectComletionDate)
+                </div>
+
+                <br />
+                <div class="row col-xs-12">
+                    <div class="col-sm-offset-3">
+                        <button type="submit" class="btn btn-warning btn-lg">Save</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

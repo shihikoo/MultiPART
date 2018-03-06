@@ -1,0 +1,47 @@
+﻿@model MultiPART.Models.ViewModel.ResearchgroupCohortAssignmentViewModel
+
+@{
+    ViewBag.Title = "Add Researchgroup to " + @Model.CohortLabel;
+}
+<section class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(m=>m.MultiPARTProjectID)
+        
+        <div class="row col-xs-12">
+
+            <div class="col-md-8 col-md-offset-2">
+
+                    @Html.HiddenFor(model => model.CohortID)
+                <div class="form-group">
+
+
+                    @Html.LabelFor(model => model.ResearchgroupID)
+                    @Html.DropDownListFor(model => model.ResearchgroupID,(SelectList)ViewBag.ResearchgroupList, "  ----  Select Research Group   ---   ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ResearchgroupID)
+
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.NumberOfAnimals)
+
+                    @Html.TextBoxFor(model => model.NumberOfAnimals, new { @class = "form-control", type="number" })
+                    @Html.ValidationMessageFor(model => model.NumberOfAnimals)
+
+                </div>
+
+                <br />
+                <div class="row col-xs-12">
+                    <div class="col-sm-offset-3">
+                        <button type="submit" class="btn btn-warning btn-lg">Save</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

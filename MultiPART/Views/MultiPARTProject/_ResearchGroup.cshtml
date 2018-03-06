@@ -1,0 +1,60 @@
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<MultiPART.Models.ViewModel.ResearchgroupInMultiPARTProjectViewModel>
+<div class="table-responsive">
+    <table class="table notopboard-table" id="researchGroups">
+        <tr>
+            <th></th>
+            <th>Research Group</th>
+            <th>Role</th>
+            <th>Registration Date </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="">
+                    <div class="row">
+                       
+                        <div class="col-md-4  col-md-offset-1 col-xs-12 borderpad">
+                            <a class="btn btn-sm btn-success btn-xs white-font" href="@Url.Action("AddUserProjectAssignment", new {researchgroupinprojectid = item.ResearchgroupInMultiPARTProjectID})">
+                                <i class="fa fa-user-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @item.ResearchgroupName
+                </td>
+
+                <td>@item.ResearchgroupRoleinMultiPARTProject
+                    @if( @item.Editable)
+                    {
+                    <a  href="@Url.Action("EditResearchgroupToProject", new { researchgroupinprojectid = item.ResearchgroupInMultiPARTProjectID })">
+                        <i class="fa fa-pencil"></i>
+                    </a>}
+                </td>
+                <td>@item.RegistrationDate.IfNotNull(d => ((DateTime)d).ToShortDateString())</td>
+                <td>
+                    @using (Ajax.BeginForm("RemoveResearchGroupFromProject",
+                    new{researchgroupinprojectid = item.ResearchgroupInMultiPARTProjectID},
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Delete",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "researchGroups"
+                    }, new { id = "delete-form-" + item.ResearchgroupInMultiPARTProjectID })
+                    )
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <button type="button" id="confirm-delete-btn" data-toggle="modal" data-target="#confirm-delete-modal" data-researchgroupid="@(item.ResearchgroupInMultiPARTProjectID)" class="btn btn-default btn-xs"
+                                data-assigned-id="@item.ResearchgroupInMultiPARTProjectID">
+                            <i class="fa fa-trash"></i>
+                        </button>
+
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

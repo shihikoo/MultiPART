@@ -1,0 +1,106 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.CohortListViewModel>
+
+
+@{
+    ViewBag.Title = "Experiment";
+
+  //  ViewBag.role = "Experimenter";
+}
+
+<section class="col-xs-12 row">
+    @using (Html.BeginForm("Index", "Animal", new { projectid = ViewBag.projectid }, FormMethod.Get))
+    {
+        @Html.ValidationSummary(true)
+
+        <input type="hidden" value ="@ViewBag.projectid" name="projectid" />
+        <h4>Please Choose Your Research Group and the Disease Model Induction Method:  </h4>
+        <br />
+        <div class="col-md-4">
+            @Html.DropDownList("diseasemodelinductionid", (SelectList)ViewBag.diseasemodelList, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownList("researchgroupid", (SelectList)ViewBag.researchgroupList, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+
+            <button type="submit" class="btn btn-danger">Select</button>
+        </div>  
+               
+    }
+</section>
+<br />
+<br />
+<br />
+@if (ViewBag.N > 0)
+{
+    <hr />
+    <br />
+    <section class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="fa fa-eyedropper fa-lg"></i>&nbsp <i class="fa fa-paw fa-lg"></i>&nbsp Cohort & Procedures 
+            </div>
+
+            <table class="table notopboard-table ">
+                <tr>
+                    <th>Cohort Label </th>
+                    <th>Cormobidity </th>
+                    <th>Disease Model Induction</th>
+                    <th>Treatment</th>
+                    <th>Outcome Assessment</th>
+                </tr>
+                @foreach (var item in Model)
+                {         
+                    <tr>
+                        <td>@item.CohortLabel
+                        </td>
+                        <td>@item.Cormobidity</td>
+                        <td>@item.DiseaseModelInduction</td>
+                        <td>@item.Treatment</td>
+                        <td>@item.OutcomeAssessment</td>
+                    </tr>                   
+                }
+            </table>
+        </div>
+    </section>
+    <br />
+    
+                if (ViewBag.researchrole.Contains("Drug Dispenser"))
+                {
+    <div class="col-md-3 col-md-offset-2 white-font">
+        @Html.ActionLink("New Animal", "Create", new { projectid = ViewBag.projectid, researchgroupid = ViewBag.researchgroupid, diseasemodelinductionid = ViewBag.diseasemodelinductionid }, new { @class = "btn btn-success btn-lg manul-center" })
+    </div>
+    <div class="col-md-3 col-md-offset-1 white-font">
+        @Html.ActionLink("Animal List", "AnimalList", new { projectid = ViewBag.projectid, researchgroupid = ViewBag.researchgroupid, diseasemodelinductionid = ViewBag.diseasemodelinductionid }, new { @class = "btn btn-info btn-lg manul-center" })
+    </div>
+                } 
+
+                if (ViewBag.researchrole.Contains("Experimenter"))
+                {
+
+    <div class="col-md-4 col-md-offset-4 white-font">
+        @Html.ActionLink("Data Entry", "AnimalList2", new { projectid = ViewBag.projectid, researchgroupid = ViewBag.researchgroupid, diseasemodelinductionid = ViewBag.diseasemodelinductionid }, new { @class = "btn btn-warning btn-lg manul-center" })
+    </div>
+                }
+
+    if (!(ViewBag.researchrole.Contains("Drug Dispenser") || ViewBag.researchrole.Contains("Experimenter")))
+    { 
+                           <h4 class="red col-xs-12">You do not have rights to enter data for those cohorts for this inistitution. Please check with your PI to add you as a drug dispenser or experimenter.</h4>
+ 
+    
+    }
+                
+    <br />    <br />
+}
+
+
+else
+{
+
+    if (ViewBag.researchgroupid != 0 && ViewBag.diseasemodelinductionid != 0)
+    {
+        
+    <div class="alert alert-warning" role="alert">No Cohort was found.</div>
+    }
+}
+

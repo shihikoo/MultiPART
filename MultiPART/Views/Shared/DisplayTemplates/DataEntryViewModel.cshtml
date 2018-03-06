@@ -1,0 +1,71 @@
+﻿@model MultiPART.Models.ViewModel.DataEntryViewModels.DataEntryViewModel
+
+
+@using (Html.BeginForm("DataEntry", "DataEntry", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>
+            @Html.DisplayFor(m => m.ProcedureName) Procedure on @Html.DisplayFor(m => m.AnimalLabel), @Html.DisplayFor(m => m.Species) @Html.DisplayFor(m => m.Strain)
+        </legend>
+        The following procedure data has been submitted
+        @Html.HiddenFor(m => m.AnimalID)
+        @Html.HiddenFor(m => m.DiseaseModelInductionID)
+        @Html.HiddenFor(m => m.ResearchGroupID)
+        @Html.HiddenFor(m => m.ProjectID)
+        @Html.HiddenFor(m => m.Species)
+        @Html.HiddenFor(m => m.Strain)
+        @Html.HiddenFor(m => m.AnimalLabel)
+        @Html.HiddenFor(m => m.ProcedureName)
+        @Html.HiddenFor(m => m.ProcedureID)
+        @Html.HiddenFor(m => m.AnimalAdministrationID)
+        @Html.HiddenFor(m => m.AdministrationID)
+        @*@Html.HiddenFor(m => m.AnimalProcedureID)*@
+
+
+          <div class="row form-group form-inline">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <h4 >
+                        Procedure Start Time
+                    </h4>
+                    @Html.DisplayFor(model => model.StartTime, new { @class = "form-control datetimepicker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.StartTime)
+            </div>
+            <div class="col-md-5" >
+                <div class ="input-group">
+                    <h4>
+                       Procedure End Time
+                    </h4>
+                    @Html.DisplayFor(model => model.EndTime, new { @class = "form-control datetimepicker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.EndTime)
+            </div>
+        </div>
+
+
+
+        @for (int i = 0; i < Model.Properties.Count; i++)
+        {
+            @Html.DisplayFor(m => m.Properties[i])
+        }
+
+        <p>
+            <div>
+                @Html.ActionLink("OK", "AnimalList2", "Animal",
+    new RouteValueDictionary()
+    {
+    {"projectId", Model.ProjectID},
+    {"diseaseModelInductionId", Model.DiseaseModelInductionID},
+    {"researchGroupId", Model.ResearchGroupID}
+    }, new Dictionary<string, object>{{"class","btn btn-default"}}
+    )
+                
+            </div>
+
+        </p>
+    </fieldset>
+}

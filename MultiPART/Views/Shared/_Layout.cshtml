@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to Multi-PART
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Multi-PART, A new paradigm for translational medicine">
+    <meta name="keywords" content="Multi-PART, NEROSCIENCE, RESEARCH, UNIVERSITY OF EDINBURGH, NEROSCIENCE, MALCOLM MACLEOD, EMILY SENA ">
+    <meta name="author" content="Jing Liao">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="~/multipart.ico">
+    @Styles.Render("~/Content/css")
+    @RenderSection("Styles", false)
+
+    <!--[if lt IE 9]>
+ <script src="js/html5shiv.js" type="text/javascript"></script>
+ <script src="js/respond.src.js" type="text/javascript"></script>
+ <script>document.createElement('footer');</script>
+<![endif]-->
+
+</head>
+<body>
+    @RenderSection("modal", required: false)
+    <div>
+        <div class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="item active">
+                            <a href="@Url.Action("Index", "Home")" class="navbar-brand top-menu">Multi-PART 	</a>
+                        </div>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <div>
+                            @Html.Partial("_authorizedmenu")
+                        </div>
+                        <div class="nav navbar-nav navbar-right" id="menu-right">
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container theme-showcase">
+            
+                @if (ViewBag.title != null)
+            {
+                    <div class="page-header">
+                        @*                <ol class="breadcrumb">
+                                <li><a href="default.htm">Home</a>
+                                </li>
+                                <li class="active">@ViewBag.Path</li>
+                            </ol>*@
+
+                        <h2>@ViewBag.Title</h2>
+                    </div>}
+
+                @RenderBody()
+                <br />
+            
+        </div>
+        <footer class="cite-footer">
+            <div class="container theme-showcase">
+                <ul class="pull-right test">
+                    <li class="socialmedialogo">&nbsp;   <a class="btn btn-primary btn-xs" href="https://www.facebook.com/camarades.info"><i class="fa fa-facebook fa-2x"></i></a>
+                        &nbsp;  <a class="btn btn-info btn-xs" href="https://twitter.com/CAMARADES_"><i class="fa fa-twitter fa-2x"></i></a>
+                        &nbsp;  <a class="btn btn-danger btn-xs" href="https://www.youtube.com/channel/UCXCC8cqm-CL3_LFNdJ0Df8g"><i class="fa fa-youtube fa-2x"></i></a>
+                    </li>
+                </ul>
+
+                <p class="pull-left">
+                    Copyright &copy; @DateTime.Now.Year Multi-PART. All Rights Reserved.
+                </p>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Home")
+                    </li>
+                    <li>
+                        <a href="mailto:multipart.camarades@ed.ac.uk?subject=Multi-PART Enquiry">Contact</a>
+                    </li>
+                    <li>
+                        <a href="http://www.dcn.ed.ac.uk/multipart/">Multi-PART Website</a>
+                    </li>
+
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/boostrapjs")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("scripts", required: false)
+
+
+</body>
+
+</html>

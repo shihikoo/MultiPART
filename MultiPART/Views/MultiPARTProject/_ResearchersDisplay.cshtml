@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.UserProjectAssignmentListViewModel>
+            <div class="table-responsive">
+<table class="table notopboard-table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Research Group
+        </th>
+        <th>Role</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>@item.Researchgroup, @item.Institution</td>
+
+            <td> @item.UserRoleinProject
+            </td>
+
+        </tr>
+    }
+
+</table>
+</div>

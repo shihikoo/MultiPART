@@ -1,0 +1,58 @@
+﻿@model MultiPART.Models.ViewModel.AnimalHusbandryViewModel
+
+@Html.HiddenFor(model => model.AnimalHusbandryID)
+@Html.HiddenFor(model => model.MultiPARTProjectID)
+@Html.HiddenFor(model => model.ResearchgroupID)
+@Html.HiddenFor(model => model.StrainID)
+@Html.HiddenFor(model => model.FieldID)
+@Html.HiddenFor(model => model.FieldType)
+
+<div class="col-sm-12 row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="form-group">
+            @Html.DisplayFor(model => model.FieldName)
+
+            @if (Model.FieldType == "Lookup")
+            {
+                @Html.DropDownListFor(m => m.OptionID, (IEnumerable<SelectListItem>)(Model.Options), string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OptionID)
+
+            }
+            else
+            {
+                if (Model.FieldType == MultiPART.EntryFieldType.Text.ToString())
+                { 
+                @Html.TextBoxFor(m => m.Value, new { @class = "form-control" })             
+                }
+
+                if (Model.FieldType == MultiPART.EntryFieldType.Integer.ToString())
+                { 
+                @Html.TextBoxFor(m => m.Value, new { @class = "form-control", @type = "number" })             
+                }
+                if (Model.FieldType == MultiPART.EntryFieldType.Double.ToString())
+                { 
+                @Html.TextBoxFor(m => m.Value, new { @class = "form-control", @type = "number" , @step="0.0001"})             
+                }
+
+                if (Model.FieldType == MultiPART.EntryFieldType.DateTime.ToString())
+                { 
+                @Html.TextBoxFor(m => m.Value, new { @class = "form-control", @type = "date" })            
+                }
+
+                if (Model.FieldType == MultiPART.EntryFieldType.Date.ToString())
+                { 
+                @Html.TextBoxFor(m => m.Value, new { @class = "form-control", @type = "date" })             
+                }
+
+                if (Model.FieldType == MultiPART.EntryFieldType.Time.ToString())
+                { 
+                @Html.TextBoxFor(m => m.Value, new { @class = "form-control", @type = "time" })            
+                }
+
+            @Html.ValidationMessageFor(model => model.Value)
+ }
+       
+        </div>
+    </div>
+</div>
+

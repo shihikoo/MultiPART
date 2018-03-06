@@ -1,0 +1,1003 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8087F04C-49E2-42A8-A0E9-4B5C375AC054}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MultiPART</RootNamespace>
+    <AssemblyName>MultiPART</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>2201c598</NuGetPackageImportStamp>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.13605.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.0\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Animal.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalAdministration.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalHusbandry.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalHusbandryField.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalHusbandryOption.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalProcedure.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalSupplier.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BehavioralScore.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Careerhistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cohort.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CohortProcedureAssignment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\AnimalHusbandryController.cs" />
+    <Compile Include="Controllers\BehavorialScoreReviewController.cs" />
+    <Compile Include="Controllers\CohortController.cs" />
+    <Compile Include="Controllers\DataEntryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstitutionController.cs" />
+    <Compile Include="Controllers\LookupTableEditorController.cs" />
+    <Compile Include="Controllers\MultiPARTProjectController.cs" />
+    <Compile Include="Controllers\ProcedureController.cs" />
+    <Compile Include="Controllers\AnimalController.cs" />
+    <Compile Include="Controllers\ProcedureDetailsController.cs" />
+    <Compile Include="Controllers\ResearchgroupController.cs" />
+    <Compile Include="Controllers\ProjectProgressController.cs" />
+    <Compile Include="Controllers\TutorialController.cs" />
+    <Compile Include="Country.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataEntry.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataEntryDesign.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataEntryDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataEntryDetailValue.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataEntryField.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataEntryOption.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enums.cs" />
+    <Compile Include="File.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\EnhancedDefaultModelBinder.cs" />
+    <Compile Include="Institution.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506111535136_delete administrationmethodFromProcedure.cs" />
+    <Compile Include="Migrations\201506111535136_delete administrationmethodFromProcedure.Designer.cs">
+      <DependentUpon>201506111535136_delete administrationmethodFromProcedure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506231029555_AnimalProcedureTable.cs" />
+    <Compile Include="Migrations\201506231029555_AnimalProcedureTable.Designer.cs">
+      <DependentUpon>201506231029555_AnimalProcedureTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506241455344_AnimalProcedureRelationship.cs" />
+    <Compile Include="Migrations\201506241455344_AnimalProcedureRelationship.Designer.cs">
+      <DependentUpon>201506241455344_AnimalProcedureRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506262330085_administration.cs" />
+    <Compile Include="Migrations\201506262330085_administration.Designer.cs">
+      <DependentUpon>201506262330085_administration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507300934462_IngnorePendings.cs" />
+    <Compile Include="Migrations\201507300934462_IngnorePendings.Designer.cs">
+      <DependentUpon>201507300934462_IngnorePendings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507300935418_FieldNameChangesProject.cs" />
+    <Compile Include="Migrations\201507300935418_FieldNameChangesProject.Designer.cs">
+      <DependentUpon>201507300935418_FieldNameChangesProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507301026198_deleteStartTimeInProject.cs" />
+    <Compile Include="Migrations\201507301026198_deleteStartTimeInProject.Designer.cs">
+      <DependentUpon>201507301026198_deleteStartTimeInProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508041456143_animaladministration.cs" />
+    <Compile Include="Migrations\201508041456143_animaladministration.Designer.cs">
+      <DependentUpon>201508041456143_animaladministration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508051436224_administrationid.cs" />
+    <Compile Include="Migrations\201508051436224_administrationid.Designer.cs">
+      <DependentUpon>201508051436224_administrationid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508051447265_animalprocedureDelete.cs" />
+    <Compile Include="Migrations\201508051447265_animalprocedureDelete.Designer.cs">
+      <DependentUpon>201508051447265_animalprocedureDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509151436042_review.cs" />
+    <Compile Include="Migrations\201509151436042_review.Designer.cs">
+      <DependentUpon>201509151436042_review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LinkTable\AnimalAdministration.cs" />
+    <Compile Include="Models\LookupTable\Question.cs" />
+    <Compile Include="Models\Table\Administration.cs" />
+    <Compile Include="Models\Table\BehavioralScore.cs" />
+    <Compile Include="Models\Table\UserDataentryAssignment.cs" />
+    <Compile Include="Models\ViewModel\AddResearchGroupViewModel.cs" />
+    <Compile Include="Models\ViewModel\AdministrationViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProjectProgressListViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProjectProgressViewModel.cs" />
+    <Compile Include="Models\ViewModel\TutorialVideo.cs" />
+    <Compile Include="MultiPARTProject.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureDetailOption.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureDetailOptionField.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Question.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\DataEntryRepository.cs" />
+    <Compile Include="Researchgroup.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResearchgroupCohortAssignment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResearchgroupInMultiPARTProject.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IFileCollection.cs" />
+    <Compile Include="Migrations\201505150943328_First.cs" />
+    <Compile Include="Migrations\201505150943328_First.Designer.cs">
+      <DependentUpon>201505150943328_First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505291825438_FileDescription.cs" />
+    <Compile Include="Migrations\201505291825438_FileDescription.Designer.cs">
+      <DependentUpon>201505291825438_FileDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506011328419_ManuallyUpdatedDatabase.cs" />
+    <Compile Include="Migrations\201506011328419_ManuallyUpdatedDatabase.Designer.cs">
+      <DependentUpon>201506011328419_ManuallyUpdatedDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506021119536_speciesname.cs" />
+    <Compile Include="Migrations\201506021119536_speciesname.Designer.cs">
+      <DependentUpon>201506021119536_speciesname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506021455052_proceduredetailfieldtype.cs" />
+    <Compile Include="Migrations\201506021455052_proceduredetailfieldtype.Designer.cs">
+      <DependentUpon>201506021455052_proceduredetailfieldtype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506031841565_spelling.cs" />
+    <Compile Include="Migrations\201506031841565_spelling.Designer.cs">
+      <DependentUpon>201506031841565_spelling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506041430181_Schema Change.cs" />
+    <Compile Include="Migrations\201506041430181_Schema Change.Designer.cs">
+      <DependentUpon>201506041430181_Schema Change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506041452054_Removed AnimalID.cs" />
+    <Compile Include="Migrations\201506041452054_Removed AnimalID.Designer.cs">
+      <DependentUpon>201506041452054_Removed AnimalID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506041508593_AddDataEntryId foreign key property.cs" />
+    <Compile Include="Migrations\201506041508593_AddDataEntryId foreign key property.Designer.cs">
+      <DependentUpon>201506041508593_AddDataEntryId foreign key property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506041543421_removed status.cs" />
+    <Compile Include="Migrations\201506041543421_removed status.Designer.cs">
+      <DependentUpon>201506041543421_removed status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506041745570_file.cs" />
+    <Compile Include="Migrations\201506041745570_file.Designer.cs">
+      <DependentUpon>201506041745570_file.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506041805520_update.cs" />
+    <Compile Include="Migrations\201506041805520_update.Designer.cs">
+      <DependentUpon>201506041805520_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506051019372_Changed File DataEntryDetailFile relationship.cs" />
+    <Compile Include="Migrations\201506051019372_Changed File DataEntryDetailFile relationship.Designer.cs">
+      <DependentUpon>201506051019372_Changed File DataEntryDetailFile relationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506051241391_units.cs" />
+    <Compile Include="Migrations\201506051241391_units.Designer.cs">
+      <DependentUpon>201506051241391_units.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506051325232_procedurepurposeOrtype.cs" />
+    <Compile Include="Migrations\201506051325232_procedurepurposeOrtype.Designer.cs">
+      <DependentUpon>201506051325232_procedurepurposeOrtype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506051336210_procedurepurposeOrtype1.cs" />
+    <Compile Include="Migrations\201506051336210_procedurepurposeOrtype1.Designer.cs">
+      <DependentUpon>201506051336210_procedurepurposeOrtype1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506051355001_dataentryprocedurepurposeortype.cs" />
+    <Compile Include="Migrations\201506051355001_dataentryprocedurepurposeortype.Designer.cs">
+      <DependentUpon>201506051355001_dataentryprocedurepurposeortype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506051413569_Nodataentryprocedurepurposeortype.cs" />
+    <Compile Include="Migrations\201506051413569_Nodataentryprocedurepurposeortype.Designer.cs">
+      <DependentUpon>201506051413569_Nodataentryprocedurepurposeortype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506081105386_deletetables.cs" />
+    <Compile Include="Migrations\201506081105386_deletetables.Designer.cs">
+      <DependentUpon>201506081105386_deletetables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\LinkTable\CohortProcedureAssignment.cs" />
+    <Compile Include="Models\LinkTable\DataEntry.cs" />
+    <Compile Include="Models\LookupTable\AnimalHusbandryOption.cs" />
+    <Compile Include="Models\LinkTable\ResearchgroupCohortAssignment.cs" />
+    <Compile Include="Models\LookupTable\AnimalSupplier.cs" />
+    <Compile Include="Models\LookupTable\Option.cs" />
+    <Compile Include="Models\LookupTable\OptionField.cs" />
+    <Compile Include="Models\LookupTable\ProcedureDetailOptionField.cs" />
+    <Compile Include="Models\LookupTable\ProcedureDetailOption.cs" />
+    <Compile Include="Models\LookupTable\Species.cs" />
+    <Compile Include="Models\LookupTable\Strain.cs" />
+    <Compile Include="Models\Table\AccountModels.cs" />
+    <Compile Include="Models\LookupTable\Country.cs" />
+    <Compile Include="Models\Table\Animal.cs" />
+    <Compile Include="Models\Table\AnimalHusbandry.cs" />
+    <Compile Include="Models\Table\DataEntryDetail.cs" />
+    <Compile Include="Models\LookupTable\DataEntryField.cs" />
+    <Compile Include="Models\LookupTable\DataEntryOption.cs" />
+    <Compile Include="Models\Table\Cohort.cs" />
+    <Compile Include="Models\Table\DataEntryDesign.cs" />
+    <Compile Include="Models\Table\File.cs" />
+    <Compile Include="Models\Table\DataEntryDetailFile.cs" />
+    <Compile Include="Models\ISoftDeletable.cs" />
+    <Compile Include="Models\Table\Institution.cs" />
+    <Compile Include="Models\Table\DataEntryDetailOption.cs" />
+    <Compile Include="Models\Table\LoginTracker.cs" />
+    <Compile Include="Models\Table\Procedure.cs" />
+    <Compile Include="Models\Table\ProcedureDetail.cs" />
+    <Compile Include="Models\Table\Researchgroup.cs" />
+    <Compile Include="Models\LinkTable\UserInResearchgroup.cs" />
+    <Compile Include="Models\LookupTable\AnimalHusbandryField.cs" />
+    <Compile Include="Models\Table\DataEntryDetailValue.cs" />
+    <Compile Include="Models\LookupTable\SIUnit.cs" />
+    <Compile Include="Models\LookupTable\Units.cs" />
+    <Compile Include="Models\ViewModel\AnimalHusbandryViewModel.cs" />
+    <Compile Include="Models\ViewModel\AnimalListViewModel.cs" />
+    <Compile Include="Models\ViewModel\AnimalViewModel.cs" />
+    <Compile Include="Models\ViewModel\CareerhistoryViewModel.cs" />
+    <Compile Include="Models\ViewModel\CohortListViewModel.cs" />
+    <Compile Include="Models\ViewModel\CohortProcedureListViewModel.cs" />
+    <Compile Include="Models\ViewModel\CohortViewModel.cs" />
+    <Compile Include="Models\ViewModel\AnimalListExperimenterViewModel.cs" />
+    <Compile Include="Models\ViewModel\DataEntryDesignViewModel.cs" />
+    <Compile Include="Models\ViewModel\DataEntryViewModels\DataEntryDetailFileViewModel.cs" />
+    <Compile Include="Models\ViewModel\DataEntryViewModels\DataEntryDetailOptionViewModel.cs" />
+    <Compile Include="Models\ViewModel\DataEntryViewModels\DataEntryDetailValueViewModel.cs" />
+    <Compile Include="Models\ViewModel\DataEntryViewModels\DataEntryDetailViewModel.cs" />
+    <Compile Include="Models\ViewModel\DataEntryFormPreviewViewModel.cs" />
+    <Compile Include="Models\ViewModel\DataEntryViewModels\DataEntryViewModel.cs" />
+    <Compile Include="Models\ViewModel\FileViewModel.cs" />
+    <Compile Include="Models\ViewModel\FileUploadViewModel.cs" />
+    <Compile Include="Models\ViewModel\InstitutionListViewModel.cs" />
+    <Compile Include="Models\ViewModel\InstitutionViewModel.cs" />
+    <Compile Include="Models\LinkTable\Careerhistory.cs" />
+    <Compile Include="Models\LinkTable\UserProjectAssignment.cs" />
+    <Compile Include="Models\Table\MultiPARTProject.cs" />
+    <Compile Include="Models\MultipartContext.cs" />
+    <Compile Include="Models\LinkTable\ResearchgroupInMultiPARTProject.cs" />
+    <Compile Include="Models\ViewModel\LookupTableListViewModel.cs" />
+    <Compile Include="Models\ViewModel\LookupTableViewModel.cs" />
+    <Compile Include="Models\ViewModel\MultiPARTProjectListViewModel.cs" />
+    <Compile Include="Models\ViewModel\MultiPARTProjectViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProcedureDetailViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProcedureListViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProcedureViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProjectViewModel.cs" />
+    <Compile Include="Models\ViewModel\RandomizationViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResearchgroupCohortAssignmentListViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResearchgroupCohortAssignmentViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResearchgroupInMultiPARTProjectViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResearchgroupListViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResearchgroupMemberListViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResearchgroupMemberViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResearchgroupViewModel.cs" />
+    <Compile Include="Models\ViewModel\UserProjectAssignmentListViewModel.cs" />
+    <Compile Include="Models\ViewModel\UserProjectAssignmentViewModel.cs" />
+    <Compile Include="Models\ViewModel\UserProjectViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Authorization\Restrict.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Services\DataEntryService.cs" />
+    <Compile Include="Services\FileService.cs" />
+    <Compile Include="Services\IValidationDictionary.cs" />
+    <Compile Include="Services\ModelStateWrapper.cs" />
+    <Compile Include="Services\ProjectProgressService.cs" />
+    <Compile Include="Services\ProjectUserValidation.cs" />
+    <Compile Include="Services\RandomisationService.cs" />
+    <Compile Include="SIUnit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Species.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Strain.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Unit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWork\IDbContext.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UserDataentryAssignment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInResearchgroup.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProjectAssignment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\BeginCollectionItem.cs" />
+    <Compile Include="Utilities\MyHelpers.cs" />
+    <Compile Include="Utilities\MyUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\camarades_style.css" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\chosen.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\chosen-sprite%402x.png" />
+    <Content Include="Content\Images\chosen-sprite.png" />
+    <Content Include="Content\Images\multipart_banner.png" />
+    <Content Include="Content\Images\multipart_logo.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="DatabaseScripts\MULTIPART2Script.sql" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\devRelease.pubxml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="multipart.ico" />
+    <Content Include="Scripts\addProcedureChosen.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js.map" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\contact.js" />
+    <Content Include="Scripts\datetimepicker-date.js" />
+    <Content Include="Scripts\fileinput.min.js" />
+    <Content Include="Scripts\handlebars-v3.0.3.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery-validation-reset.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.loadTemplate-1.4.4.js" />
+    <Content Include="Scripts\jquery.loadTemplate-1.4.4.min.js" />
+    <Content Include="Scripts\jquery.migrate.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.date.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\less-1.4.1.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Account\Users.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Shared\_authorizedmenu.cshtml" />
+    <Content Include="Views\Account\LostPassword.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\ManageRoles.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ViewProfile.cshtml" />
+    <Content Include="Views\Institution\Index.cshtml" />
+    <Content Include="Views\Institution\Create.cshtml" />
+    <Content Include="Views\Institution\Edit.cshtml" />
+    <Content Include="Views\Account\EditResearchHistory.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Account\CreateResearchHistory.cshtml" />
+    <Content Include="Views\Researchgroup\Index.cshtml" />
+    <Content Include="Views\Researchgroup\Create.cshtml" />
+    <Content Include="Views\Researchgroup\Edit.cshtml" />
+    <Content Include="Views\Shared\_ResearchgroupIndexDelete.cshtml" />
+    <Content Include="Views\Researchgroup\ResearchgroupMembers.cshtml" />
+    <Content Include="Views\Researchgroup\AddResearchgroupMember.cshtml" />
+    <Content Include="Views\Researchgroup\EditResearchgroupMember.cshtml" />
+    <Content Include="Views\MultiPARTProject\Index.cshtml" />
+    <Content Include="Views\MultiPARTProject\Details.cshtml" />
+    <Content Include="Views\MultiPARTProject\Create.cshtml" />
+    <Content Include="Views\MultiPARTProject\Edit.cshtml" />
+    <Content Include="Views\MultiPARTProject\AddResearchgroupToProject.cshtml" />
+    <Content Include="Views\MultiPARTProject\EditResearchgroupToProject.cshtml" />
+    <Content Include="Views\MultiPARTProject\AddUserProjectAssignment.cshtml" />
+    <Content Include="Views\MultiPARTProject\EditUserProjectAssignment.cshtml" />
+    <Content Include="Views\Procedure\Create.cshtml" />
+    <Content Include="Views\Procedure\Edit.cshtml" />
+    <Content Include="Views\Cohort\Create.cshtml" />
+    <Content Include="Views\Cohort\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CohortViewModel.cshtml" />
+    <Content Include="Views\Cohort\AddResearchgroup.cshtml" />
+    <Content Include="Views\Cohort\AddProcedure.cshtml" />
+    <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Animal\AnimalList.cshtml" />
+    <Content Include="Views\Animal\Create.cshtml" />
+    <Content Include="Views\Animal\Details.cshtml" />
+    <Content Include="Views\Cohort\EditResearchgroup.cshtml" />
+    <Content Include="Views\Cohort\IndexResearchgroup.cshtml" />
+    <Content Include="Views\Animal\AnimalList2.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProcedureViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AnimalHusbandryViewModel.cshtml" />
+    <Content Include="Views\AnimalHusbandry\Index.cshtml" />
+    <Content Include="Views\ProcedureDetails\Index.cshtml" />
+    <Content Include="Views\DataEntry\DataEntryDesign.cshtml" />
+    <Content Include="Views\MultiPARTProject\ViewDetails.cshtml" />
+    <Content Include="Views\DataEntry\FormPreview.cshtml" />
+    <Content Include="Views\MultiPARTProject\_ResearchGroup.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataEntryFormPreviewViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataEntryDesignViewModel.cshtml" />
+    <Content Include="Views\MultiPARTProject\_Researchers.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AnimalListExperimenterViewModel.cshtml" />
+    <Content Include="Views\DataEntry\DataEntry.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\LookupTableEditor\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\LookupTableViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataEntryViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataEntryFieldViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataEntryDetailFileViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataEntryDetailOptionViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataEntryDetailValueViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Upload.cshtml" />
+    <Content Include="Views\DataEntry\DataEntryDetailFileViewModel.cshtml" />
+    <Content Include="Views\DataEntry\DataEntryDetailOptionViewModel.cshtml" />
+    <Content Include="Views\DataEntry\DataEntryDetailValueViewModel.cshtml" />
+    <Content Include="Views\MultiPARTProject\_ProcedureList.cshtml" />
+    <Content Include="Views\LookupTableEditor\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProcedureListViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DataEntryDetailFileViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DataEntryDetailOptionViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DataEntryDetailValueViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DataEntryFieldViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DataEntryViewModel.cshtml" />
+    <Content Include="Views\Administration\Index.cshtml" />
+    <Content Include="Views\Administration\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AdministrationViewModel.cshtml" />
+    <Content Include="Views\DataEntry\DataEntryDisplay.cshtml" />
+    <Content Include="Views\Tutorial\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TutorialVideo.cshtml" />
+    <Content Include="Views\Tutorial\Details.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\MultiPARTProject\_AddResearchgroupToProject .cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\MultiPARTProject\_Cohorts.cshtml" />
+    <Content Include="Views\MultiPARTProject\_CreateCohortModal.cshtml" />
+    <Content Include="Views\MultiPARTProject\_CreateProcedureModal.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ResearchgroupInMultiPARTProjectViewModel.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\MultiPARTProject\_ResearchGroupDisplay.cshtml" />
+    <Content Include="Views\MultiPARTProject\_ResearchersDisplay.cshtml" />
+    <Content Include="Views\MultiPARTProject\_CohortsDisplay.cshtml" />
+    <Content Include="Views\MultiPARTProject\_ProcedureListDisplay.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProcedureListViewModel.cshtml" />
+    <Content Include="Views\Administration\IndexDisplay.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AdministrationViewModel.cshtml" />
+    <Content Include="Views\ProcedureDetails\IndexDisplay.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProcedureDetailViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProcedureDetailViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiPARTProjectListViewModel.cshtml" />
+    <Content Include="Views\ProjectProgress\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProjectProgressViewModel.cshtml" />
+    <Content Include="Views\ProjectProgress\_ProjectProgressList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Images\" />
+    <Folder Include="Models\Builders\" />
+    <Folder Include="Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505150943328_First.resx">
+      <DependentUpon>201505150943328_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505291825438_FileDescription.resx">
+      <DependentUpon>201505291825438_FileDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506011328419_ManuallyUpdatedDatabase.resx">
+      <DependentUpon>201506011328419_ManuallyUpdatedDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506021119536_speciesname.resx">
+      <DependentUpon>201506021119536_speciesname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506021455052_proceduredetailfieldtype.resx">
+      <DependentUpon>201506021455052_proceduredetailfieldtype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506031841565_spelling.resx">
+      <DependentUpon>201506031841565_spelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041430181_Schema Change.resx">
+      <DependentUpon>201506041430181_Schema Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041452054_Removed AnimalID.resx">
+      <DependentUpon>201506041452054_Removed AnimalID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041508593_AddDataEntryId foreign key property.resx">
+      <DependentUpon>201506041508593_AddDataEntryId foreign key property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041543421_removed status.resx">
+      <DependentUpon>201506041543421_removed status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041745570_file.resx">
+      <DependentUpon>201506041745570_file.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041805520_update.resx">
+      <DependentUpon>201506041805520_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506051019372_Changed File DataEntryDetailFile relationship.resx">
+      <DependentUpon>201506051019372_Changed File DataEntryDetailFile relationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506051241391_units.resx">
+      <DependentUpon>201506051241391_units.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506051325232_procedurepurposeOrtype.resx">
+      <DependentUpon>201506051325232_procedurepurposeOrtype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506051336210_procedurepurposeOrtype1.resx">
+      <DependentUpon>201506051336210_procedurepurposeOrtype1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506051355001_dataentryprocedurepurposeortype.resx">
+      <DependentUpon>201506051355001_dataentryprocedurepurposeortype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506051413569_Nodataentryprocedurepurposeortype.resx">
+      <DependentUpon>201506051413569_Nodataentryprocedurepurposeortype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506081105386_deletetables.resx">
+      <DependentUpon>201506081105386_deletetables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111535136_delete administrationmethodFromProcedure.resx">
+      <DependentUpon>201506111535136_delete administrationmethodFromProcedure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506231029555_AnimalProcedureTable.resx">
+      <DependentUpon>201506231029555_AnimalProcedureTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506241455344_AnimalProcedureRelationship.resx">
+      <DependentUpon>201506241455344_AnimalProcedureRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506262330085_administration.resx">
+      <DependentUpon>201506262330085_administration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507300934462_IngnorePendings.resx">
+      <DependentUpon>201507300934462_IngnorePendings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507300935418_FieldNameChangesProject.resx">
+      <DependentUpon>201507300935418_FieldNameChangesProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507301026198_deleteStartTimeInProject.resx">
+      <DependentUpon>201507301026198_deleteStartTimeInProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508041456143_animaladministration.resx">
+      <DependentUpon>201508041456143_animaladministration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508051436224_administrationid.resx">
+      <DependentUpon>201508051436224_administrationid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508051447265_animalprocedureDelete.resx">
+      <DependentUpon>201508051447265_animalprocedureDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509151436042_review.resx">
+      <DependentUpon>201509151436042_review.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58066</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49697/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

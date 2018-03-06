@@ -1,0 +1,62 @@
+﻿@model MultiPART.Models.ViewModel.AdministrationViewModel
+
+@{
+    ViewBag.Title = "Add Schedule";
+}
+<h3><small>Assume the model induction time is the time "0".</small></h3>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+                <input type="hidden" value ="@ViewBag.projectid" name="projectid" />
+
+    <div class="col-xs-12 col-sm-12 col-sm-offset-0 row">
+
+
+        <div class="form-group col-xs-3">
+            <div class="col-xs-12">
+                @Html.LabelFor(model => model.StartTime)
+            </div>
+            <div class="col-xs-12">
+                @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StartTime)
+            </div>
+        </div>
+        <div class="form-group col-xs-3 ">
+            <div class="col-xs-12">
+                @Html.LabelFor(model => model.EndTime)
+            </div>
+            <div class="col-xs-12">
+                @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EndTime)
+            </div>
+        </div>
+                <div class="form-group col-xs-3">
+            <div class="col-xs-12">
+                @Html.LabelFor(model => model.unitID)
+            </div>
+            <div class="col-xs-12">
+                @Html.DropDownListFor(model => model.unitID, (IEnumerable<SelectListItem>)Model.unitList.OrderBy(s=>s.Value), new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.unitID)
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row col-xs-12">
+        <div class="col-xs-5 col-xs-offset-5">
+            <br />
+            <button type="submit" class="btn btn-warning btn-lg">Add</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back</a>
+        </div>
+        <br />
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

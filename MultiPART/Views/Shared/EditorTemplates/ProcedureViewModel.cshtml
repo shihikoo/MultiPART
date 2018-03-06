@@ -1,0 +1,31 @@
+﻿@model MultiPART.Models.ViewModel.ProcedureViewModel
+
+@Html.ValidationSummary(true)
+
+@Html.HiddenFor(model => model.ProcedureID)
+@Html.HiddenFor(model => model.MultiPARTProjectID)
+@Html.HiddenFor(model => model.ProcedurePurposeID)
+@Html.HiddenFor(model => model.ProcedurePurpose)
+
+
+<div class="col-sm-12 row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProcedureLabel)
+            @Html.TextBoxFor(model => model.ProcedureLabel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ProcedureLabel)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProcedureTypeID)
+            @Html.DropDownListFor(model => model.ProcedureTypeID, Model.ProcedureTypeList, "---- Select Procedure Type ----", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ProcedureTypeID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Details)
+            @Html.TextAreaFor(model => model.Details, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Details)
+        </div>
+    </div>
+</div>

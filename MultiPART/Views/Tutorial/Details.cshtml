@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = @Model.Title;
+}
+
+<div class="col-sm-12">
+    <!-- article-->
+    <!-- VIDEO-->
+    <div class="container-video">
+        <div class="fluid-width-video-wrapper">
+            <iframe class = "video"  src="@Model.URL" frameborder="0" allowfullscreen></iframe>
+
+        </div>
+    </div>
+
+    <!--/ VIDEO -->
+    <div class="panel panel-default hidden-xs" style="margin-top: 30px;">
+        <div class="panel-body">
+            <!-- TABS CONTROLS -->
+            <ul id="myTab" class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#Information" data-toggle="tab"><i class="icon-info-sign"></i>Information </a></li>
+                <li><a href="#Content" data-toggle="tab"><i class="icon-info-sign"></i>Content </a></li>
+            </ul>
+            <!-- /TABS CONTROLS -->
+            <!-- PANES -->
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="Information">
+                    <br />
+                    <p>Published on: @Model.PublishDate</p>
+                    <p>Function presented: @Model.Functions</p>
+                </div>
+                <div class="tab-pane fade widget-tags " id="Content">
+                    <br />
+                    <p>@Model.Script</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /CONTENT SIDE-->
+
+<!-- .pager -->
+<div class="col-xs-12">
+    <ul class="pager"> 
+        @if(!ViewBag.First) 
+        {  <li class="previous"><a href="@Url.Action("Details", new {id=Model.ID -1})" class =""><i class="fa fa-arrow-left"></i> Previous</a></li>}
+        @if(!ViewBag.Last){
+         <li class="next"><a href="@Url.Action("Details", new {id=Model.ID +1})">Next <i class="fa fa-arrow-right"></i></a></li>}
+    </ul>
+</div>
+<!-- /.pager -->

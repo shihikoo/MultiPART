@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.ResearchgroupMemberListViewModel>
+
+@{
+    ViewBag.Title = "Members of " + @ViewBag.ResearchgroupName;
+}
+
+<div class=" white-font">
+    @*@Html.ActionLink("+ New Member", "AddResearchgroupMember", new { researchgroupid = @ViewBag.ResearchgroupID }, new { @class = "btn btn-warning" })*@
+                    <a class="btn btn-success pull-left" href ="@Url.Action("AddResearchgroupMember", new { researchgroupid = @ViewBag.ResearchgroupID })"><i class="fa fa-plus">&nbsp</i> Member</a>
+    <br /><br />
+</div>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRoleInResearchgroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(@Html.Raw(HttpUtility.HtmlDecode(item.Name)).ToString(), "EditResearchgroupMember", new { researchgroupmemberid = item.UserInResearchgroupID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserRoleInResearchgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+
+            <td>@if (item.EndTime != null)
+                {@Html.DisplayFor(modelItem => item.EndTime)}
+                else
+                {<text> Current </text>}
+            </td>
+            <td>
+                @using (Html.BeginForm("DeleteResearchgroupMember", "Researchgroup", new { researchgroupmemberid = item.UserInResearchgroupID }))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-default btn-xs ">Delete</button>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

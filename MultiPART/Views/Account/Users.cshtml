@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MultiPART.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "Manage Users";
+}
+<div class="row col-xs-12">
+    
+ @using (Html.BeginForm("Users", "Account", FormMethod.Get))
+        { 
+            <div class="form-group col-sm-3 col-xs-11">
+                @Html.DropDownList("filterRole", (IEnumerable<SelectListItem>)ViewBag.Roles, "- select roles -", new { @class = "form-control" })
+            </div>
+            <div class="col-xs-1">
+                <button type="submit" class="btn btn-warning center-block">Go</button>
+            </div>
+   
+        }
+    </div>
+<div class="table-responsive col-xs-12">
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.UserName).ToString(), "Users", new { sortOrder = (ViewBag.sortOrder == "UserName") ? "UserName desc" : "UserName", filterRole = ViewBag.filterRole })
+        </th>
+       <th>
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.ForeName).ToString(), "Users", new { sortOrder = (ViewBag.sortOrder == "ForeName") ? "ForeName desc" : "ForeName", filterRole = ViewBag.filterRole })
+        </th>
+         <th>
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.SurName).ToString(), "Users", new { sortOrder = (ViewBag.sortOrder == "SurName") ? "SurName desc" : "SurName", filterRole = ViewBag.filterRole })
+        </th>
+         <th>
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.Email).ToString(), "Users", new { sortOrder = (ViewBag.sortOrder == "Email") ? "Email desc" : "Email", filterRole = ViewBag.filterRole })
+        </th>
+                 <th>
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.Details).ToString(), "Users", new { sortOrder = (ViewBag.sortOrder == "Details") ? "Details desc" : "Details", filterRole = ViewBag.filterRole })
+        </th>
+
+                 <th>
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.CreatedOn).ToString(), "Users", new { sortOrder = (ViewBag.sortOrder == "CreatedOn") ? "CreatedOn desc" : "CreatedOn", filterRole = ViewBag.filterRole })
+        </th>
+
+                 <th>
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.Roles).ToString(), "Users", new { sortOrder = (ViewBag.sortOrder == "Roles") ? "Roles desc" : "Roles", filterRole = ViewBag.filterRole })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+             @Html.DisplayFor(modelItem => item.Roles)
+        </td>
+        <td>
+            @Html.ActionLink("Profile", "ViewProfile", new { username = item.UserName }) |
+            @Html.ActionLink("Edit", "Edit", new { username = item.UserName }) |
+            @Html.ActionLink("Roles", "ManageRoles", new { username = item.UserName }) 
+        </td>
+    </tr>
+}
+
+</table>
+    </div>

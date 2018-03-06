@@ -1,0 +1,27 @@
+﻿@model MultiPART.Models.ViewModel.ProcedureListViewModel
+
+<tr>
+    <td>
+        @Model.ProcedureLabel
+    </td>
+    <td>@Model.ProcedureType</td>
+    <td>@Model.Details</td>
+    <td>
+        <a href="@Url.Action("Index", "Administration", new { procedureid = Model.ProcedureID, projectid = Model.MultiPARTProjectMultiPARTProjectID })" class="btn btn-info btn-xs white-font">
+            <i class="fa fa-stethoscope fa-lg"></i>
+            <span class="badge">@Model.NumberOfAdministration</span>
+        </a>
+    </td>
+    <td>
+        <a href="@Url.Action("Index", "ProcedureDetails", new { procedureid = Model.ProcedureID, projectid = Model.MultiPARTProjectMultiPARTProjectID })" class="btn btn-info btn-xs white-font">
+            <i class="fa fa-file-text-o fa-lg"></i>
+            <span class="badge">@Model.NumberOfDetails</span>
+        </a>
+    </td>
+    <td>
+        <a href="@Url.Action("DataEntryDesign", "DataEntry", new { procedureid = Model.ProcedureID, projectid = Model.MultiPARTProjectMultiPARTProjectID })" class="btn btn-info btn-xs white-font">
+            <i class="fa fa-gear fa-lg"></i>
+            <span class="badge">@Model.NumberOfFormField</span>
+        </a>
+    </td>
+</tr>

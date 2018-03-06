@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.ResearchgroupCohortAssignmentListViewModel>
+
+@{
+    
+    ViewBag.Title = "Research Groups in Cohort " + ViewBag.CohortLabel;
+}
+<div class=" white-font">
+    <a href="@Url.Action("AddResearchgroup", new { cohortid = ViewBag.cohortid })" class = "btn btn-success"><i class="fa fa-plus fa-lg">&nbsp</i> Research Group </a>
+</div>
+<br />
+
+<div class="col-xs-12 row">
+    <table class="table table-hover">
+        <tr>
+
+            <th>@Html.DisplayNameFor(m => m.ResearchgroupName)</th>
+
+            <th>@Html.DisplayNameFor(m => m.NumberOfAnimals)</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@Html.Raw(HttpUtility.HtmlDecode(item.ResearchgroupName)).ToString(), "EditResearchgroup", new { rcaid = item.ResearchgroupCohortAssignmentID })
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.NumberOfAnimals)
+                </td>
+                <td>
+                    @using (Html.BeginForm("DeleteResearchgroup", "Cohort", new { rcaid = item.ResearchgroupCohortAssignmentID }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-default btn-xs "><i class="fa fa-trash"></i></button>
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
+<br />
+<br />
+<br />
+
+<p>
+                           @Html.ActionLink("Back to Project", "Details", "MultiPARTProject", new { projectid = @ViewBag.MultiPARTProjectID }, new { @class = "btn btn-default btn-lg" })
+
+    @*<a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default">Back to Project</a>*@
+</p>

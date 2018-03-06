@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<MultiPART.Models.ViewModel.CohortListViewModel>
+<div class="table-responsive">
+    <table class="table notopboard-table cohort-table">
+        <tr>
+            <th>Cohort Label </th>
+            <th># of Animals / Sample Size</th>
+            <th>Sex </th>
+            <th>Strain</th>
+            <th>MinWeight (g)</th>
+            <th>MaxWeight (g)</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.CohortLabel
+                </td>
+                  @{
+            string completestyle = "red";
+            if (item.NumberOfAnimals >= item.SampleSize) { completestyle = "green"; }
+            }
+                <td class="@completestyle">@item.NumberOfAnimals/@item.SampleSize</td>
+                @*<td>@item.NumberOfAnimals/@item.SampleSize</td>*@
+                <td>@item.Sex</td>
+                <td>@item.Strain</td>
+                <td>@item.MinWeight</td>
+                <td>@item.MaxWeight</td>
+            </tr>
+        }
+    </table>
+</div>

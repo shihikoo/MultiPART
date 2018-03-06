@@ -1,0 +1,70 @@
+﻿@model MultiPART.Models.ViewModel.CohortViewModel
+
+@Html.HiddenFor(model => model.MultiPARTProjectID)
+@Html.HiddenFor(model => model.CohortID)
+
+<div class="col-sm-12 row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.CohortLabel)
+
+            @Html.TextBoxFor(model => model.CohortLabel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CohortLabel)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StrainID)
+            @Html.DropDownListFor(model => model.StrainID, (SelectList)ViewBag.StrainList, "---- Select Strain ----", new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.StrainID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SampleSize)
+
+            @Html.TextBoxFor(model => model.SampleSize, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SampleSize)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SexID)
+
+            @Html.DropDownListFor(model => model.SexID, (SelectList)ViewBag.SexList, "---- Select Animal Sex ----", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SexID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MinAge)
+
+            @Html.TextBoxFor(model => model.MinAge, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MinAge)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxAge)
+
+            @Html.TextBoxFor(model => model.MaxAge, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaxAge)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MinWeight)
+
+            @Html.TextBoxFor(model => model.MinWeight, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MinWeight)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxWeight)
+
+            @Html.TextBoxFor(model => model.MaxWeight, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaxWeight)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Details)
+
+            @Html.TextAreaFor(model => model.Details, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Details)
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿@model MultiPART.Models.ViewModel.TutorialVideo
+
+<div class=" col-lg-4 col-sm-6" style="padding: 1em">
+    <iframe class = "video"  src="@Model.URL" frameborder="0" allowfullscreen></iframe>
+
+    <h3>@Model.Title</h3>
+    <h4>@Model.PublishDate</h4>
+    @*<p> @Model.Description</p>*@
+    <a class="btn btn-primary white-font" href="@Url.Action("Details", "Tutorial", new { id = @Model.ID })">Watch<span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>

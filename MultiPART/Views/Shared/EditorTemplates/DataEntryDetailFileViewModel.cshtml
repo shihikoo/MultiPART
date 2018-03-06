@@ -1,0 +1,55 @@
+﻿@using Microsoft.Ajax.Utilities
+@using MultiPART.Models.ViewModel.DataEntryViewModels
+@using MultiPART.Utilities
+@model DataEntryDetailFileViewModel
+
+<tr>
+    @{
+        var prefixArray = ViewData.TemplateInfo.HtmlFieldPrefix.Split('.');
+        var prefix = prefixArray[0];
+    }
+    @using (Html.BeginCollectionItem(prefix + ".DataEntryDetails"))
+    {
+        @Html.HiddenFor(m => m.DataEntryDetailID)
+        @Html.HiddenFor(m => m.DataEntryDataEntryID)
+        @Html.HiddenFor(m => m.DesignID)
+        @Html.HiddenFor(m => m.FileID)
+        @Html.HiddenFor(m => m.ProjectID)
+        @Html.HiddenFor(m => m.ProcedureID)
+        @Html.HiddenFor(m => m.ResearchGroupID)
+        @Html.HiddenFor(m => m.AnimalID)
+        @Html.Hidden("ModelType", Model.GetType())
+
+        <td class="col-md-2 form-group">
+            <div>
+                @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control datetimepicker" })
+                @Html.ValidationMessageFor(model => model.StartTime)
+            </div>
+        </td>
+        <td class="col-md-2 form-group">
+            <div>
+                @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control datetimepicker" })
+                @Html.ValidationMessageFor(model => model.EndTime)
+            </div>
+        </td>
+        <td class="col-md-3 row form-group">
+            <div>
+                @Html.TextAreaFor(model => model.Description, 4, 20, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </td>
+        <td class="col-md-3 form-group">
+            @Html.HiddenFor(m=>m.FileUrl)
+            <div>
+                @Html.EditorFor(model => model.File, new { @class = "form-control" })
+                
+                @Html.ValidationMessageFor(model => model.File)
+            </div>
+        </td>
+        <td class="col-md-2">
+            <button class="btn btn-default btn-danger" href="#" onclick="$(this).parents().eq(1).remove(); viewModel.checkAdd(@Model.DesignID);">
+                <i class="fa fa-trash"></i>
+            </button>
+        </td>
+    }
+</tr>

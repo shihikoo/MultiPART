@@ -1,0 +1,103 @@
+﻿@using MultiPART.Utilities
+@model IEnumerable<MultiPART.Models.ViewModel.LookupTableViewModel>
+
+@{
+    ViewBag.Title = "Lookup Table Editor";
+}
+<section id="record">
+    @using (Html.BeginForm("Index", "LookupTableEditor", FormMethod.Get))
+    {
+        <div class="row col-xs-12">
+            <div class="col-xs-10 col-sm-4 col-sm-offset-0">
+                @Html.DropDownList("lookuptablename", (IEnumerable<SelectListItem>)ViewBag.lookuptables, " -- Select a lookup table -- ", new { @class = "form-control" })
+            </div>
+            <div class="col-xs-1">
+                <button type="submit" class="btn btn-primary "><i class="fa fa-angle-double-right fa-lg"></i></button>
+            </div>
+        </div>
+    }
+
+        <br />
+        <br />
+
+
+    @if (ViewBag.lookuptablename != "" && ViewBag.lookuptablename != null)
+    {
+        using (Html.BeginForm("Index", "LookupTableEditor", new { lookuptablename = ViewBag.lookuptablename }, FormMethod.Post))
+        {
+        @Html.ValidationSummary()
+        <div class="row col-xs-12">
+            <div class="col-xs-12">
+                <div class="manul-center">
+                    <div class="row ">
+                        <div class="row col-sm-12">
+                            <h4 class=" col-xs-4 col-sm-4">
+                                @ViewBag.ContentName
+                            </h4>
+                            <h4 class=" col-xs-4 col-sm-3">@ViewBag.PurposeOrTypeName</h4>
+                            <h4 class=" col-xs-2 col-sm-3">@ViewBag.CategoryName</h4>
+                            <h4 class=" col-xs-2 col-sm-1">@ViewBag.MultipleName</h4>
+                            <h4 class=" col-xs-1">
+                                @Html.NoEncodeActionLink("<i class='fa fa-plus white-font'></i>", "Create", "Create", "LookupTableEditor",
+                         routeValues: new { lookuptablename = ViewBag.lookuptablename },
+                         htmlAttributes: new { data_modal = "", @class = "btn btn-success " })
+                            </h4>
+                        </div>
+                        <div class="row col-xs-12" id="recordlist">
+                            @Html.EditorForModel()
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4 col-xs-offset-4">
+                <br />
+                <br />
+                <button type="submit" class="btn btn-primary btn-lg manul-center">Save</button>
+                <br />
+                <br />
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirm-delete-modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Please Confirm
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to remove this item?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-default btn-sm" onclick="dismissDelete()" id="removeRecordBtn">Yes, I'm sure!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        }
+
+    }
+</section>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $('#confirm-delete-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var recordid = button.data('recordid');
+            $('#removeRecordBtn').data('rId', recordid);
+        });
+
+        function dismissDelete() {
+            $('#confirm-delete-modal').modal('hide');
+            var rId = $('#removeRecordBtn').data('rId');
+            var deleteForm = $('#delete-form-' + rId);
+            deleteForm.submit();
+        }
+
+    </script>
+}

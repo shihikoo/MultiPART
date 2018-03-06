@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.CohortListViewModel>
+<div class="table-responsive">
+    <table class="table notopboard-table cohort-table">
+        <tr>
+            <th>Cohort Label </th>
+            <th># of Animals / Sample Size</th>
+            <th>Sex </th>
+            <th>Strain</th>
+            <th>MinWeight (g)</th>
+            <th>MaxWeight (g)</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Edit", "Cohort", new { cohortid = item.CohortID })" class="btn btn-sm btn-warning btn-xs white-font" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>
+                    @item.CohortLabel
+                </td>
+                @{
+                    bool samplesizeFullfilled = item.NumberOfAnimals >= item.SampleSize;
+            string completestyle = "red";
+            if (samplesizeFullfilled) { completestyle = "green"; }
+            }
+                <td class="@completestyle">@item.NumberOfAnimals/@item.SampleSize</td>
+                <td>@item.Sex</td>
+                <td>@item.Strain</td>
+                <td>@item.MinWeight</td>
+                <td>@item.MaxWeight</td>
+                <td>
+                    @using (Ajax.BeginForm("CopyCohort", new { cohortid = item.CohortID, projectid = item.MultiPARTProjectID },new AjaxOptions()
+                    { 
+                        HttpMethod = "Post",
+                InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "cohortList"
+            })
+                        
+                   )
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit" class="btn btn-success btn-xs " data-toggle="tooltip" data-placement="top" title="Copy"><i class="fa fa-files-o">  </i>  </button>
+                    }
+                </td>
+                <td>
+                    @if (item.NumberOfAnimals == 0 )
+                    {
+                    using (Html.BeginForm("Delete", "Cohort", new { cohortid = item.CohortID }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-default btn-xs " data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                    }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

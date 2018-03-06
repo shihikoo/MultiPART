@@ -1,0 +1,12 @@
+﻿@model MultiPART.Models.ViewModel.ProcedureDetailViewModel
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6">
+            <h4>@Html.DisplayFor(m => m.FieldName)</h4>
+        </div>
+        @Html.DisplayFor(model => model.DisplayValue, new { @class = "form-control" })
+    </div>
+</div>
+
+<br />

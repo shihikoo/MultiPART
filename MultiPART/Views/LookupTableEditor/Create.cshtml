@@ -1,0 +1,45 @@
+﻿@model MultiPART.Models.ViewModel.LookupTableViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="col-sm-offset-2 col-sm-8">
+
+    @using (Html.BeginForm("Create", "LookupTableEditor", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        
+        @Html.HiddenFor(m=>m.LookupTableName)
+        
+        <h4>@ViewBag.ContentName </h4>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+        <br />
+        if (ViewBag.CategoryName != "")
+        {
+        <h4>@ViewBag.CategoryName</h4>
+        @Html.DropDownListFor(m => m.CategoryID, (IEnumerable<SelectListItem>)Model.Categories.OrderBy(s=>s.Text), new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CategoryID)
+        }
+        <br />
+        if (ViewBag.PurposeOrTypeName != "")
+        {
+        <h4>
+            @ViewBag.PurposeOrTypeName </h4>
+        @Html.DropDownListFor(m => m.PurposeOrTypeID, (IEnumerable<SelectListItem>)Model.PurposesTypes.OrderBy(s=>s.Text), new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PurposeOrTypeID)
+        }
+        <div class="col-sm-4 col-sm-offset-4">
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary btn-lg manul-center">Add</button>
+    <br />
+    <br />
+</div>
+    }
+</div>
+<br />
+
+

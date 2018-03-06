@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MultiPART.Models.ViewModel.ResearchgroupListViewModel>
+
+@{
+    ViewBag.Title = "Research Group";
+}
+
+<div class=" white-font col-xs-12 row">
+    <a class="btn btn-success pull-left" href ="@Url.Action("Create")"><i class="fa fa-plus">&nbsp</i> Research Group</a>
+
+</div>
+<br />
+<br />
+<br />
+<div class="col-xs-12 row table-responsive">
+    <table class="table table-hover">
+        <tr>
+
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.ResearchgroupName).ToString(), "Index", new { sortOrder = (ViewBag.sortOrder == "ResearchgroupName") ? "ResearchgroupName desc" : "ResearchgroupName" })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.InstitutionName).ToString(), "Index", new { sortOrder = (ViewBag.sortOrder == "InstitutionName") ? "InstitutionName desc" : "InstitutionName" })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.Country).ToString(), "Index", new { sortOrder = (ViewBag.sortOrder == "Country") ? "Country desc" : "Country" })
+            </th>
+            <th>
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.CreatedOn).ToString(), "Index", new { sortOrder = (ViewBag.sortOrder == "CreatedOn") ? "CreatedOn desc" : "CreatedOn" })
+            </th>
+            <th></th>
+            @if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Administrator") || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Superuser"))
+            {
+                <th></th>
+            }
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@Html.Raw(HttpUtility.HtmlDecode(item.ResearchgroupName)).ToString(), "Edit", new { id = item.ResearchgroupID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstitutionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td class="white-font">
+                    @Html.ActionLink("Members", "ResearchgroupMembers", new { researchgroupid = item.ResearchgroupID }, new { @class = "btn btn-info btn-xs " })
+                </td>
+                @if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Administrator") || Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Superuser"))
+                {
+                    <td>
+                        @using (Html.BeginForm("Delete", "Researchgroup", new { id = item.ResearchgroupID }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-default btn-xs ">Delete</button>
+                        }
+                    </td>
+  
+                }
+            </tr>
+        }
+
+    </table>
+</div>

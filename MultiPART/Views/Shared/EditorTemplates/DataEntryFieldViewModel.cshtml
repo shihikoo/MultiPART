@@ -1,0 +1,117 @@
+﻿@using MultiPART
+@using MultiPART.Models.ViewModel.DataEntryViewModels
+@using MultiPART.Utilities
+@model DataEntryFieldViewModel
+@using (Html.BeginCollectionItem("Properties"))
+{
+    @Html.HiddenFor(m => m.Mandatory)
+    @Html.HiddenFor(m => m.Multiple)
+    @Html.HiddenFor(m => m.ViewModelType)
+    @Html.HiddenFor(m => m.DesignID)
+    @Html.HiddenFor(m => m.DataEntryID)
+    @Html.HiddenFor(m => m.DataEntryFieldName)
+    <div class="panel panel-primary row">
+        <div class="panel-heading">
+            <i class="fa fa-pencil fa-lg"></i>&nbsp @Html.DisplayFor(model => model.DataEntryFieldName)
+            @if (Model.Mandatory)
+            {
+                <span>*</span>
+            }
+            <div class="pull-right" id="add-@Model.DesignID">
+                @switch (Model.ViewModelType)
+                {
+                    case DataEntryViewModelType.File:
+                        <a href="#" onclick="viewModel.addNewFile(@Model.DesignID)"><i class="fa fa-plus"></i></a>
+                        <script type="text/x-jquery-tmpl" id="fileDetailTemplate-@Model.DesignID">
+                            @Html.CollectionItemJQueryTemplate("DataEntryDetailFileViewModel", new DataEntryDetailFileViewModel()
+                   {
+                       DataEntryDataEntryID = Model.DataEntryID,
+                       DesignID = Model.DesignID,
+                       StartTime = DateTime.Now,
+                       EndTime = DateTime.Now,
+                       ProjectID = Model.ProjectID,
+                       ResearchGroupID = Model.ResearchGroupID,
+                       AnimalID = Model.AnimalID,
+                       ProcedureID = Model.ProcedureID
+                   })
+                        </script>
+                        break;
+                    case DataEntryViewModelType.Option:
+                    <a href="#" onclick="viewModel.addNewOption(@Model.DesignID)"><i class="fa fa-plus"></i></a>
+                    <script type="text/x-jquery-tmpl" id="optionDetailTemplate-@Model.DesignID">
+                        @Html.CollectionItemJQueryTemplate("DataEntryDetailOptionViewModel", new DataEntryDetailOptionViewModel()
+                    {
+                        DataEntryDataEntryID = Model.DataEntryID,
+                        DesignID = Model.DesignID,
+                        Options = Model.Options,
+                        StartTime = DateTime.Now,
+                        EndTime = DateTime.Now
+                    })
+                    </script>
+                        break;
+                    case DataEntryViewModelType.Value:
+                    <a href="#" onclick="viewModel.addNewValue(@Model.DesignID)"><i class="fa fa-plus"></i></a>
+                    <script type="text/x-jquery-tmpl" id="valueDetailTemplate-@Model.DesignID">
+                        @Html.CollectionItemJQueryTemplate("DataEntryDetailValueViewModel", new DataEntryDetailValueViewModel()
+                    {
+                        DataEntryDataEntryID = Model.DataEntryID,
+                        DesignID = Model.DesignID,
+                        StartTime = DateTime.Now,
+                        EndTime = DateTime.Now
+                    })
+                    </script>
+                        break;
+                    default:
+                        throw new Exception("Model not of required type");
+                }
+            </div>
+        </div>
+        <table class="table notopboard-table">
+            <thead>
+                @switch (Model.ViewModelType)
+                {
+                    case DataEntryViewModelType.File:
+                        <tr>
+                            <th class="col-md-2"><div>Start Time</div></th>
+                            <th class="col-md-2"><div>End Time</div></th>
+                            <th class="col-md-3"><div>Description</div></th>
+                            <th class="col-md-3"><div>File</div></th>
+                            <th class="col-md-2"></th>
+                        </tr>
+                        break;
+                    case DataEntryViewModelType.Option:
+                    <tr>
+                        <th class="col-md-2"><div>Start Time</div></th>
+                        <th class="col-md-2"><div>End Time</div></th>
+                        <th class="col-md-3"><div>@Model.DataEntryFieldName</div></th>
+                        <th class="col-md-3"></th>
+                        <th class="col-md-2"></th>
+                    </tr>
+                        break;
+                    case DataEntryViewModelType.Value:
+                    <tr>
+                        <th class="col-md-2"><div>Start Time</div></th>
+                        <th class="col-md-2"><div>End Time</div></th>
+                        <th class="col-md-3"><div>@Model.DataEntryFieldName</div></th>
+                        <th class="col-md-3"></th>
+                        <th class="col-md-2"></th>
+                    </tr>
+                        break;
+                    default:
+                        throw new Exception("Model not of required type");
+                        break;
+                }
+            </thead>
+            <tbody id="detailsEditor-@Model.DesignID" class="detailsEditor" data-multiple="@Model.Multiple.ToString().ToLower()">
+                @if (Model.DataEntryDetails != null)
+                {
+                    for (int i = 0; i < Model.DataEntryDetails.Count; i++)
+                    {
+                        @Html.EditorFor(model => model.DataEntryDetails[i])
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+}

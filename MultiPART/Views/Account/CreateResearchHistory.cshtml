@@ -1,0 +1,58 @@
+﻿@model MultiPART.Models.ViewModel.CareerhistoryViewModel
+
+@{
+    ViewBag.Title = "Add New Research History: " + @ViewBag.username;
+}
+
+<section class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="col-sm-12 row">
+            @Html.HiddenFor(model => model.UserName)
+
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InstitutionName)
+
+                    @Html.DropDownListFor(model => model.InstitutionID, (SelectList)ViewBag.InstitutionList, "---- Select Institution ----", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.InstitutionName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartTime)
+                    @Html.TextBoxFor(model => model.StartTime, new { @type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.StartTime)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndTime)
+                    @Html.TextBoxFor(model => model.EndTime, new { @type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EndTime)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Position)
+                    @Html.TextBoxFor(model => model.Position, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Position)
+                </div>
+            </div>
+        </div>
+        <div class="row col-xs-12">
+            <div class="col-sm-offset-5">
+                <br />
+                <button type="submit" class="btn btn-warning btn-lg">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-lg btn-default manul-center col-md-3 ">Back</a>
+            </div>
+            <br />
+        </div>
+    }
+</section>
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

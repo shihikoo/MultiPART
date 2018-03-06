@@ -1,0 +1,33 @@
+﻿@charset "utf-8";
+body{
+	margin-top: 30px;
+}
+body a{
+	color:#c66300
+}
+body a:hover{
+	 color:#000   /* ;#c09853 */
+}  
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.carousel-caption {
+  bottom: 20px;
+  padding-bottom: 15px;
+  color: #fff;
+}
+h1{
+    color: #A62A00;
+}
+h3 {
+    color:#000;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    color: #c09853;
+    border-color: #c09853;
+    background-color: #c66300;
+}
